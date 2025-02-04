@@ -1,0 +1,23 @@
+.appNav{
+    display: flex;
+    align-items: center;
+    padding-left:30px;
+    padding-top: 10px;
+    height: 50px;
+    direction:ltr;
+
+}
+.appNav ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.appNav a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+}  
+.appNav a:hover{
+    color: aqua;
+} 
