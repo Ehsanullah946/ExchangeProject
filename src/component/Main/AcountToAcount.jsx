@@ -26,8 +26,8 @@ function AcountToAcount() {
         <div className={styles.imageSection}>
          <div>
         <label>description:</label>
-        <textarea/>
-        <label>Date:</label>
+        <textarea/><br/>
+        {/* <label>Date:</label> */}
         <input type="text" value={date}/>
          </div>
         <img src="/about.jpg" alt='not found'/>  
