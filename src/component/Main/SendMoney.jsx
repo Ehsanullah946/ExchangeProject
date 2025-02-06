@@ -2,64 +2,84 @@ import styles from './SAR.module.css'
 function SendMoney() {
     const date=new Date();
     return (
-        <div className={styles.container}>
+      <div className={styles.container}>
             <form className={styles.formContainer}>
-              <div className={styles.leftSection}>
+              <div className={styles.labelPart}>
+                  <label>Guarantor:</label>
+                  <label>Number:</label>
+                  <label>Transfer</label>
+                  <label>Reciver:</label>
+                  <label>Amount:</label>
+                  <label>Currency:</label>
+                  <label>charges:</label>
+                  <label>place charge:</label>
+              </div>
+              <div className={styles.inputPart}>
                 <select>
                     <option>Ehsan</option>
                     <option>Ali</option>
                     <option>Mohmod</option>
-                </select>   
+                </select> 
                 <input type="text" name="number"/>
-                <div className={styles.sender}>
-                <label>sender:</label>
                 <input type="text" name="SName"/>
-                 <button>Details</button>
-                </div> 
-              <div className={styles.reciever}>
-               <label>Reciver:</label>
                <input type='text' name='Rname'/>
-               <button>Details</button>
-              </div>
-              <div className={styles.amount}>
-                <label>Amount:</label>
                 <input type="text" name='amount'/>
-              </div>
-              <div className={styles.currency}>
-                <label>Currency:</label>
                 <input type="text" name='currency'/>
-              </div>
-              <div className={styles.kamition}>
-                <label>Kamition:</label>
-                <input type="text" name='kamition'/>
+                <div className={styles.charge} >
+                <input type="text" name='charge'/>
                 <select>
                     <option>AFG</option>
                     <option>KD</option>
                     <option>USD</option>
                 </select>
-              </div>
-              <div className={styles.kamition}>
-                <label>passing Kamition:</label>
-                <input type="text" name='kamition'/>
-                <select>
-                    <option>AFG</option>
-                    <option>KD</option>
-                    <option>USD</option>
-                </select>
-              </div>
-              <div>
-                <label>Date</label>
-                <input type="text" value={date}/>
-              </div>
-             </div>
-             <div className={styles.meddleSection}>
-                <div>
-                    
                 </div>
-             </div>
+                <div className={styles.charge} >
+                <input type="text" name='placeCharge'/>
+                <select>
+                    <option>AFG</option>
+                    <option>KD</option>
+                    <option>USD</option>
+                </select>
+                </div>
+              </div>
+              <div className={styles.labelPart2}>
+                <label>Date</label>
+                <div>
+                <label>customer</label>
+                <input type="checkbox" />
+                </div>
+                <label>Exchange Money</label>
+                <label>Guarantor</label>
+                <label>Description</label>
+              </div>
+              <div className={styles.inputPart2}>
+              <input type="text" value={date}/>
+               <div>
+              <select>
+                  <option>Ehsan</option>
+                  <option>Ali</option>
+                  <option>Mohmod</option>
+              </select>
+              <button>➕</button>
+               </div>
+               <div>
+              <input type="text" />
+              <button>➕</button>
+              </div>
+              <select>
+              <option>Ehsan</option>
+              <option>Ali</option>
+              <option>Mohmod</option>
+              </select>
+              <textarea/>  
+              </div>
              <div className={styles.rightSection}>
-                
-             </div>
+                <img src="/about.jpg" alt="not found" />
+                 <div>
+                  <button>take picture</button>
+                  <button>select</button>
+                 </div>
+             </div> 
             </form>
         </div>
     )

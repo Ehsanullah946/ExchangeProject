@@ -30,6 +30,9 @@ function MainNav() {
                 <NavLink to="consumption">Consumption</NavLink>
             </li>
             <li>
+                <NavLink to="dayBook">Daily</NavLink>
+            </li>
+            <li>
                 <NavLink to="rate">Rate</NavLink>
             </li>
             <li>
