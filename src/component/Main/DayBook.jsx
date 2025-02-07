@@ -1,3 +1,4 @@
+import Button from '../Button';
 import styles from './DayBook.module.css'
 function DayBook() {
     const date=new Date();
@@ -13,19 +14,37 @@ function DayBook() {
                 <div className={styles.inputPart1}>
                 <input type="text" value={date}/>
                 <select>
-                    <option>AFG</option>
-                    <option>USA</option>
-                    <option>KA</option>
+                    <option>Ehsan</option>
+                    <option>Ali</option>
+                    <option>Mahmod</option>
                 </select>
                 <input type="text" name='number' />
                <textarea/>
+               <div>
+               <Button>save</Button>  
+               <Button>cancel</Button>  
                </div>
-               <div className={styles.inputPart2}>
-                <div className={styles.Currency1}>
-                    
-
+               </div>
+                <div className={styles.labelPart2}>
+                    <label>افغانی</label>
+                    <label>دالر</label>
+                    <label>تومن</label>
                 </div>
-                </div>     
+               <div className={styles.inputPart2}>
+                <div className={styles.currency}>
+                    <input type="text" name='Deposit'/>
+                    <input type="text" name='withdrow' />
+                </div>
+                <div className={styles.currency}>
+                <input type="text" name='Deposit'/>
+                <input type="text" name='withdrow' />
+                </div>
+                <div className={styles.currency}>
+                    <input type="text" name='Deposit'/>
+                    <input type="text" name='withdrow' />
+                </div>
+             </div> 
+            
         </form>
       </div>
     )

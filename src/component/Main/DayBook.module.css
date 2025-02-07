@@ -32,3 +32,25 @@
    margin-bottom: 5px;
    margin-right: 5px;
 }
+.inputPart2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.inputPart1 textarea{
+    border:1px solid black;
+}
+.labelPart2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 30px;
+}
+.currency input[name="Deposit"]{
+    background-color: blue;
+    color: white;
+}
+.currency input[name="withdrow"]{
+    background-color: red;
+    color: white;
+}
