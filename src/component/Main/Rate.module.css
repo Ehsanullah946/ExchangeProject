@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+}
+
+.container{
+    padding: 100px;
+    margin: auto;
+    border: 3px solid black;
+    width: fit-content;
+}
+.labelPart1,.labelPart2{
+    display: flex;
+    flex-direction: column;
+}
+.inputPart1,.inputPart2{
+    display: flex;
+    flex-direction: column;
+
+}
+.formContainer{
+    display: flex;
+}
+.formContainer input{
+    margin: 10px;
+    width: 220px;
+}
+.formContainer label{
+    margin:6px;
+}
