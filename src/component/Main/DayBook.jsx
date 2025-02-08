@@ -21,8 +21,8 @@ function DayBook() {
                 <input type="text" name='number' />
                <textarea/>
                <div>
-               <Button>save</Button>  
-               <Button>cancel</Button>  
+               <Button type="primary">save</Button>  
+               <Button type="position">cancel</Button>  
                </div>
                </div>
                 <div className={styles.labelPart2}>

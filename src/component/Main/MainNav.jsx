@@ -36,7 +36,7 @@ function MainNav() {
                 <NavLink to="rate">Rate</NavLink>
             </li>
             <li>
-                <NavLink to="acount">Acount</NavLink>
+                <NavLink to="acount">Account</NavLink>
             </li>
           </ul>
         </nav>
