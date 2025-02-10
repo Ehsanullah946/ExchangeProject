@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: fit-content;
+    margin:auto;
+    padding: 20px 20px 30px 60px;
+    border: 1px solid black;  
+}
+.formContainer{
+  display: flex;  
+  justify-content: space-evenly;  
+}
+.inputPart1{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 20px;
+}
+.labelPart1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.inputPart2{
+    display:flex;
+    flex-direction: column;
+     justify-content: space-between;
+}
+.inputPart1 input{
+    width: 220px;
+    /* margin-bottom: 8px; */
+} 
+.labelPart1 label,
+.labelPart2 label,
+.labelPart3 label{
+    font-size: 12px; 
+    width: 100px;
+
+}
+.labelPart2{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.labelPart2 label{
+    margin-bottom: 25px;
+}
+.inputPart2 textarea{
+    border: 1px solid black;
+    width: 220px; 
+}  
+
+ 

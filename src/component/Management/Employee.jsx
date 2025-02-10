@@ -1,8 +1,8 @@
 import Button from '../Button';
 import styles from './Manage.module.css'
-function Owner() {
+function Employee() {
     return (
-      <div className={styles.container}>
+        <div className={styles.container}>
         <form action="" className={styles.formContainer}>
            <div className={styles.labelPart1}>
              <label>ID:</label>
@@ -24,27 +24,23 @@ function Owner() {
             <input type="text" name='job' />
            </div>
            <div className={styles.labelPart2}>
-             <label htmlFor="">language:</label>
+             <label htmlFor="">PhoneN</label>
              <label htmlFor="">natinal card:</label>
              <label htmlFor="">Permenent Address:</label>
              <label htmlFor="">Current Address:</label>
            </div>
            <div className={styles.inputPart2}>
-            <select name="" id="">
-                <option value="">دری</option>
-                <option value="">پشتو</option>
-                <option value="">English</option>
-            </select>
+            <input type="text" />
             <input type="text" />
             <textarea/>
             <textarea/>    
            </div>
            <div className={styles.labelPart3}>
-            <label htmlFor="">PhoneNo.</label>
-            <label htmlFor="">whatsApp:</label>
-            <label htmlFor="">Email:</label>
-            <label htmlFor="">Telegram:</label>
-           </div>
+            <label>Grpss Salary</label>
+            <label htmlFor="">tax</label>
+            <label htmlFor="">Net Salary</label>
+            <label htmlFor="">Money Type</label>
+           </div> 
            <div className={styles.inputPart3}>
             <input type="text" />
             <input type="text" />
@@ -61,4 +57,4 @@ function Owner() {
     )
 }
 
-export default Owner
+export default Employee

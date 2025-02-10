@@ -18,7 +18,7 @@ import Acounts from "./component/Main/Acounts";
 import AfghanBankDeposit from "./component/Bank/AfghanBankDeposit";
 import AfghanBankWithdrow from "./component/Bank/AfghanBankWithdrow";
 import Owner from "./component/Management/Owner";
-import Employee from "./component/Main/Employee";
+import Employee from "./component/Management/Employee";
 import Customer from "./component/Management/Customer";
 import SenderReceiver from "./component/Main/SenderReceiver";
 import Guarantor from "./component/Management/Guarantor";
