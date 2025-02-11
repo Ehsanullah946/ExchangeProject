@@ -41,7 +41,7 @@
     margin-right: 30px;
 }
 .inputPart input{
-    width: 220px;
+    /* width: 220px; */
     margin-top: 8px;
 } 
 .inputPart2 input,
@@ -76,6 +76,9 @@
 }
 img{
     height: 150px;
+}
+select{
+    /* margin-top: 10px; */
 }
 
   

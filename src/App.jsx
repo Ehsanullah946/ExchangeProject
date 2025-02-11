@@ -20,7 +20,7 @@ import AfghanBankWithdrow from "./component/Bank/AfghanBankWithdrow";
 import Owner from "./component/Management/Owner";
 import Employee from "./component/Management/Employee";
 import Customer from "./component/Management/Customer";
-import SenderReceiver from "./component/Main/SenderReceiver";
+import SenderReceiver from "./component/Management/SenderReceiver";
 import Guarantor from "./component/Management/Guarantor";
 import CreateUser from "./component/Management/CreateUser";
 import Branch from "./component/Management/Branch";

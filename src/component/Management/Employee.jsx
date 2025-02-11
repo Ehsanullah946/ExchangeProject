@@ -25,7 +25,7 @@ function Employee() {
            </div>
            <div className={styles.labelPart2}>
              <label htmlFor="">PhoneN</label>
-             <label htmlFor="">natinal card:</label>
+             <label htmlFor="">natinal code:</label>
              <label htmlFor="">Permenent Address:</label>
              <label htmlFor="">Current Address:</label>
            </div>

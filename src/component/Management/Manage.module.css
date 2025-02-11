@@ -28,10 +28,6 @@
     display:flex;
     flex-direction: column;
      justify-content: space-between;
-}
-.inputPart1 input{
-    width: 220px;
-    /* margin-bottom: 8px; */
 } 
 .labelPart1 label,
 .labelPart2 label,
@@ -45,6 +41,12 @@
     display: flex;
     flex-direction: column;
 }
+.labelPart3{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+ 
+}
 .labelPart2 label{
     margin-bottom: 25px;
 }
@@ -52,5 +54,15 @@
     border: 1px solid black;
     width: 220px; 
 }  
+.labelPart3 label,
+.inputPart3 input{
+    margin-bottom: 10px;
+    
+} 
+.picture{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
 
  
