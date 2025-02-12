@@ -1,8 +1,42 @@
+
+import Button from "../Button";
+import styles from './Reports.module.css'
 function DaybookReport() {
+    const date=new Date();
     return (
-        <div>
-            Day book report
-        </div>
+        <div className={styles.container}>
+        <form action="" className={styles.formContainer}>
+           <div className={styles.labelPart1}>
+             <label htmlFor="">Date:</label>
+             <label htmlFor="">Money type:</label>
+             <label htmlFor="">User:</label>
+           </div>
+           <div className={styles.inputPart1}>
+             <input type="text" value={date} />
+              <select name="" id="">
+                 <option value="">افغانی</option>
+                 <option value="">دالر</option>
+              </select>
+              <select name="" id="">
+                 <option value="">admin</option>
+                 <option value="">Ali</option>
+              </select>
+           </div>
+           <div className={styles.labelPart2}>
+             <div>
+                 <input type="checkbox" name="week" id="" />
+                 <label htmlFor="week">show Day of week</label>
+             </div>
+           </div>
+           <div>
+             <input type="checkbox" name="" id="" />
+             <label htmlFor="">chart view</label>
+           </div>
+           <div className={styles.btn}>
+           <Button type="primary">draw Report</Button>
+           </div>
+        </form>
+     </div>
     )
 }
 

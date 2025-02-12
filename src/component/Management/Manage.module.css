@@ -1,8 +1,4 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+
 .container{
     width: fit-content;
     margin:auto;
@@ -23,6 +19,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* margin-bottom: 10px; */
 }
 .inputPart2{
     display:flex;
@@ -45,7 +42,6 @@
     margin-left: 20px;
     display: flex;
     flex-direction: column;
- 
 }
 .labelPart2 label{
     margin-bottom: 25px;
@@ -63,6 +59,13 @@
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+}
+input[type="password"]{
+    height: 20px;
+}
+input[type="email"]{
+    height: 20px;
+    
 }
 
  

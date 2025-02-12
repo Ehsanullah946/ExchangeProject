@@ -80,6 +80,7 @@ function App() {
          <Route path="branch" element={<Branch/>}/>
         </Route>
         <Route path="/reports" element={<Reports/>}>
+        <Route index element={<Navigate replace to="profetReport"/>} />
          <Route path="profetReport" element={<ProfetReport/>}/>
          <Route path="depositReport" element={<DepositReport/>}/>
          <Route path="withdrowReport" element={<WithdrowReport/>}/>

@@ -38,7 +38,7 @@ function ReportNav() {
               <NavLink to="costomerReport">Customer Report</NavLink>
           </li>              
           <li>
-              <NavLink to="guarantorReport">Guarantor Report</NavLink>
+              <NavLink to="guarantorReport">Branch Report</NavLink>
           </li>                           
           <li>
               <NavLink to="bankReport">Bank Report</NavLink>

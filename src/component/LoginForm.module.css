@@ -1,4 +1,4 @@
-.container{
+ /* .container{
      margin: 150px auto;
      padding: 60px 30px;
     background-color: red;
@@ -21,11 +21,9 @@
     justify-content: space-around;
 }
 input[type="text"]{
-    padding: 20px 5px;
-    font-size: 100px;
-}
+     padding: 20px 5px; 
+     font-size: 100px; 
+ }
 input{
     margin-top: 15px;
-}
-
-
+}  */

@@ -49,7 +49,12 @@ textarea{
   /* background-color: var(--color-light--3); */
   transition: all 0.2s;
 }
-
+input[type="checkbox"]{
+  width: 20px;
+}
+input[type="radio"]{
+  width: 20px;
+}
 input:focus {
   outline: none;
   /* background-color: #fff; */

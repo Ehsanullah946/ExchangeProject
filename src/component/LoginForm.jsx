@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import styles from './LoginForm.module.css'
 import Button from './Button';
+import styles from './LoginForm.module.css'
 function LoginForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ function LoginForm() {
       }else{
           alert("error")
       }
-    };
+};
     return (
         <div className={styles.container}> 
         <form onSubmit={handleSubmit(onSubmit)} >
