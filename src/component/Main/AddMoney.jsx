@@ -33,6 +33,7 @@ function AddMoney() {
           <input type='reset' name='reset'/>
           </div>
           </form>
+          <div className='table'>
           <table border="1">
             <tr>
               <th>No</th>
@@ -67,6 +68,7 @@ function AddMoney() {
               <td>2025/02/02</td>
             </tr>
           </table>
+          </div>
         </div>
     )
 }

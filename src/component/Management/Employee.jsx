@@ -2,6 +2,7 @@ import Button from '../Button';
 import styles from './Manage.module.css'
 function Employee() {
     return (
+      <>
         <div className={styles.container}>
         <form action="" className={styles.formContainer}>
            <div className={styles.labelPart1}>
@@ -52,8 +53,26 @@ function Employee() {
             <Button type="primary">Take Picture</Button>
            </div>
         </form>
-
       </div>
+      <div className='table'>
+      <table border="1">
+          <tr>
+            <th>ID</th>
+            <th>ّFirst Name</th>
+            <th>Last Name</th>
+            <th>Father Name</th>
+            <th>Gender</th>
+            <th>job</th>
+            <th>Natianal code</th>
+            <th>Phone No</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+
+      </>
     )
 }
 

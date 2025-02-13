@@ -2,6 +2,7 @@
 import styles from './Manage.module.css'
 function CreateUser() {
     return (
+      <>
         <div className={styles.container}>
         <form action="" className={styles.formContainer}>
            <div className={styles.labelPart1}>
@@ -31,6 +32,24 @@ function CreateUser() {
            </div>
         </form>
       </div>
+      <div className='table'>
+      <table border="1">
+          <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>WhatsApp</th>
+            <th>User Type</th>
+            <th>Employee</th>
+            <th>Prevelages</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      </>
     )
 }
 

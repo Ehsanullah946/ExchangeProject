@@ -2,6 +2,7 @@ import styles from './SAR.module.css'
 function ReciveMoney() {
     const date=new Date();
     return (
+        <>
      <div className={styles.container}>
         <form className={styles.formContainer}>
         <div className={styles.labelPart}>
@@ -91,6 +92,27 @@ function ReciveMoney() {
         </div> 
         </form>
      </div>
+     <div className='table'>
+    <table border="1">
+          <tr>
+            <th>Transfer NO</th>
+            <th>ّAmount</th>
+            <th>Currency</th>
+            <th>Charges Amount</th>
+            <th>Currency</th>
+            <th>Transfer To</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Destinitation</th>
+            <th>Pass to</th>
+            <th>Pass No</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+    </div>
+   </>
     )
 }
 

@@ -2,6 +2,7 @@ import styles from './AddMoney.module.css'
 function AcountToAcount() {
     const date=new Date();
     return (
+        <>
         <div>
         <h2 className={styles.title}>Account to Account Details</h2>
         <form className={styles.addContainer}>
@@ -36,8 +37,24 @@ function AcountToAcount() {
         <input type='submit' name='submit'/>
         <input type="reset" name='reset'/>
         </div>
-        </form>
-        </div>
+      </form>
+    </div>
+    <div className='table'>
+    <table border="1">
+          <tr>
+            <th>No</th>
+            <th>ّFrom Account</th>
+            <th>To Account</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+    </div>
+  </>
     )
 }
 

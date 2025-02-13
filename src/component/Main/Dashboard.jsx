@@ -2,6 +2,7 @@ import styles from './Dashboard.module.css'
 import Button from "../Button"
 function Dashboard() {
     return (
+      <>
         <div className={styles.container}>
           <div className={styles.box}>
             <div>
@@ -36,6 +37,21 @@ function Dashboard() {
              <Button type="boxBtn">more info❓</Button>
           </div>
         </div>
+        <table border="1">
+          <tr>
+            <th>No</th>
+            <th>Currency</th>
+            <th>Rate</th>
+            <th>دالر</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>افغانی</td>
+            <td>72</td>
+            <td>21000</td>
+          </tr>
+        </table>
+      </>
     )
 }
 

@@ -1,7 +1,9 @@
 import styles from './Accounts.module.css'
 function Acounts() {
     const date=new Date();
+    
         return (
+          <>
         <div className={styles.container}>
           <form className={styles.formContainer}>
            <div className={styles.labelPart1}>
@@ -30,9 +32,23 @@ function Acounts() {
                 <input type="text" name='To'/>
                  <h1>300 دالر</h1>
             </div>
-          </div>
-           
+          </div>  
         </div>
+        <div className='table'>
+        <table border="1">
+          <tr>
+            <th>Account No</th>
+            <th>ّCustomer</th>
+            <th>Currency</th>
+            <th>Balance</th>
+            <th>Date of Creation</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+        </div>
+       </>
     )
 }
 

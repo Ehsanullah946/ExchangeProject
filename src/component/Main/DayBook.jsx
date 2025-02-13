@@ -3,6 +3,7 @@ import styles from './DayBook.module.css'
 function DayBook() {
     const date=new Date();
     return (
+        <>
       <div className={styles.container}>
         <form className={styles.formContainer}>
              <div className={styles.labelPart1}>    
@@ -43,10 +44,25 @@ function DayBook() {
                     <input type="text" name='Deposit'/>
                     <input type="text" name='withdrow' />
                 </div>
-             </div> 
-            
+             </div>  
         </form>
       </div>
+      <div className='table'>
+    <table border="1">
+          <tr>
+            <th>No.</th>
+            <th>Customer</th>
+            <th>Debit</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Transaction</th>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+    </div>
+        </>
     )
 }
 
