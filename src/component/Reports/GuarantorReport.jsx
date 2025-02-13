@@ -37,6 +37,19 @@ function GuarantorReport() {
                  </select>
              </div>
              <div>
+                 <label htmlFor="">transaction:</label>  
+                 <select name="" id="">
+                  <option value="">Transfer</option>
+                  <option value="">Recieve</option>
+                  <option value="">Deposit</option>
+                  <option value="">withdrow</option>
+                  <option value="">Account to Account</option>
+                  <option value="">Exchage</option>
+                  <option value="">check Out</option>
+                  <option value="">check In</option>
+                 </select>
+             </div>
+             <div>
                  <input type="checkbox" name="" id="" />
                  <label htmlFor="">All Report</label>  
              </div>

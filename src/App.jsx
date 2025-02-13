@@ -17,6 +17,8 @@ import Rate from "./component/Main/Rate";
 import Acounts from "./component/Main/Acounts";
 import AfghanBankDeposit from "./component/Bank/AfghanBankDeposit";
 import AfghanBankWithdrow from "./component/Bank/AfghanBankWithdrow";
+import ForeignBankDeposit from "./component/Bank/ForeignBankDeposit";
+import ForeignBankWithdrow from "./component/Bank/ForeignBankWithdrow";
 import Owner from "./component/Management/Owner";
 import Employee from "./component/Management/Employee";
 import Customer from "./component/Management/Customer";
@@ -34,14 +36,13 @@ import RecievingReport from "./component/Reports/RecievingReport";
 import ExpenceReport from "./component/Reports/ExpenceReport";
 import SellingReport from "./component/Reports/SellingReport";
 import PurchaseReport from "./component/Reports/PurchaseReport";
-import ChangerWealth from "./component/Reports/ChangerWealth";
 import WealthReport from "./component/Reports/WealthReport";
 import CustomerReport from "./component/Reports/CustomerReport";
 import GuarantorReport from "./component/Reports/GuarantorReport";
 import BankReport from "./component/Reports/BankReport";
 import DaybookReport from "./component/Reports/DaybookReport";
 import WalletReport from "./component/Reports/WalletReport";
-import AccountReport from "./component/Reports/AccountReport";
+import RatesReport from "./component/Reports/RatesReport";
 function App() {
   return <div>
     <BrowserRouter> 
@@ -65,8 +66,8 @@ function App() {
         <Route index element={<Navigate replace to="ABDeposit"/>} />
          <Route path="ABDeposit" element={<AfghanBankDeposit/>}/>
          <Route path="ABWithdrow" element={<AfghanBankWithdrow/>}/>
-         <Route path="FBDeposit" element={<AfghanBankDeposit/>}/>
-         <Route path="FBWithdrow" element={<AfghanBankDeposit/>}/>
+         <Route path="FBDeposit" element={<ForeignBankDeposit/>}/>
+         <Route path="FBWithdrow" element={<ForeignBankWithdrow/>}/>
         </Route>
         <Route path="/management" element={<Management/>}>
          <Route index element={<Navigate replace to="owner"/>} />
@@ -89,14 +90,13 @@ function App() {
          <Route path="expenceReport" element={<ExpenceReport/>}/>
          <Route path="sellingReport" element={<SellingReport/>}/>
          <Route path="purchaseReport" element={<PurchaseReport/>}/>
-         <Route path="changerWealth" element={<ChangerWealth/>}/>
          <Route path="wealthReport" element={<WealthReport/>}/>
          <Route path="costomerReport" element={<CustomerReport/>}/>
          <Route path="guarantorReport" element={<GuarantorReport/>}/>
          <Route path="bankReport" element={<BankReport/>}/>
          <Route path="daybookReport" element={<DaybookReport/>}/>
          <Route path="walletReport" element={<WalletReport/>}/>
-         <Route path="accountReport" element={<AccountReport/>}/>
+         <Route path="rateReport" element={<RatesReport/>}/>
         </Route>
         <Route path="/setting" element={<Setting/>}/>
       </Routes>

@@ -1,0 +1,62 @@
+.container{
+    width: fit-content;
+    margin:auto;
+    padding: 20px 20px 30px 60px;
+    border: 1px solid black;  
+}
+.formContainer{
+  display: flex;  
+  justify-content: space-evenly;  
+}
+.inputPart1{
+    display:flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+.labelPart1,
+.inputPart2{
+    display: flex;
+    flex-direction: column;
+}
+.inputPart2 input,
+.inputPart1 input,
+.inputPart1 select{
+    margin-bottom: 10px;
+}
+.labelPart1 label,
+.labelPart2 label{
+    font-size: 12px; 
+    width: 100px;
+
+}
+.labelPart2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.labelPart2 label,
+.labelPart1 label,
+.labelPart1 div{
+    margin-bottom: 10px;
+}
+.inputPart2 textarea{
+    border: 1px solid black;
+    width: 220px; 
+}  
+ 
+.picture{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+input[type="password"]{
+    height: 20px;
+}
+input[type="email"]{
+    height: 20px;
+    
+}
+
+ 

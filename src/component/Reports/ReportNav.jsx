@@ -27,10 +27,7 @@ function ReportNav() {
           </li>              
           <li>
               <NavLink to="purchaseReport">Purchase Report</NavLink>
-          </li>              
-          <li>
-              <NavLink to="changerWealth">Changer Wealth</NavLink>
-          </li>              
+          </li>                           
           <li>
               <NavLink to="wealthReport">Wealth Report</NavLink>
           </li>              
@@ -50,7 +47,7 @@ function ReportNav() {
               <NavLink to="walletReport">Wallet Report</NavLink>
           </li>              
           <li>
-              <NavLink to="accountReport">Account Report</NavLink>
+              <NavLink to="rateReport">Rates Report</NavLink>
           </li>              
         </ul>
       </nav>
