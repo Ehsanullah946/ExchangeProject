@@ -2,8 +2,9 @@
 .container{
     padding: 20px 50px 50px 50px ;
     margin: auto;
-    border: 3px solid black;
+    border: 3px double rgb(34, 255, 0);
     width: fit-content;
+    height: 440px;
 }
 .labelPart1,.labelPart2{
     display: flex;

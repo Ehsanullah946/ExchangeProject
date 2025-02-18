@@ -1,7 +1,6 @@
 import styles from './Accounts.module.css'
 function Acounts() {
     const date=new Date();
-    
         return (
           <>
         <div className={styles.container}>
@@ -13,7 +12,7 @@ function Acounts() {
            </div>
            <div className={styles.inputPart1}>
             <input type="text" name='Number' />
-            <input type="text" name='customer' />
+            <input type="text" name='customer'/>
             <input type="text" value={date} />
            </div>
           </form>

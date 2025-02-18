@@ -11,6 +11,7 @@
     height: 150px;
     position: relative;
     display: flex;
+    border: 1px dashed white;
 }
 .box div{
     margin-left: 15px;

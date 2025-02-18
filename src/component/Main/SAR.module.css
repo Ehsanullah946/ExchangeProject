@@ -7,12 +7,11 @@
     width: fit-content;
     margin:auto;
     padding: 20px 100px 30px 100px;
-    border: 1px solid black;
+    border: 3px double rgb(34, 255, 0);
     
 }
 .formContainer{
   display: flex;
-  /* justify-content: space-around; */
   justify-content: space-evenly;  
 }
 .labelPart{
