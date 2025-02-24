@@ -17,20 +17,20 @@ function LoginForm() {
       }
 };
     return (
-        <div className={styles.container}> 
+        <div className={styles.contain}> 
         <form onSubmit={handleSubmit(onSubmit)} >
-         <div  className={styles.formContainer}>
-          <div className={styles.labelPart}>
+         <div  className={styles.FormContainer}>
+          <div className={styles.labelSection}>
             <label htmlFor="UserName">UserName:</label>
             <label htmlFor="Password">Password:</label>
           </div>
-          <div className={styles.inputPart}>  
+          <div className={styles.inputSection}>  
             <input 
               id="name" 
               type="text"
               {...register('name', { required: 'Name is required' })} 
               />
-             {errors.name && <span>{errors.name.message}</span>}
+             {/* {errors.name && <span>{errors.name.message}</span>} */}
             <input 
               id="password" 
               type="password" 
@@ -39,7 +39,7 @@ function LoginForm() {
                 minLength: { value: 6, message: 'Password must be at least 6 characters' }
               })} 
             />
-         {errors.password && <span>{errors.password.message}</span>}
+         {/* {errors.password && <span>{errors.password.message}</span>} */}
           </div>
          </div>
          <Button type="formBtn">Submit</Button>

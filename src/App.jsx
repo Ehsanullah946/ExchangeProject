@@ -43,8 +43,10 @@ import BankReport from "./component/Reports/BankReport";
 import DaybookReport from "./component/Reports/DaybookReport";
 import WalletReport from "./component/Reports/WalletReport";
 import RatesReport from "./component/Reports/RatesReport";
+import {CustomerProvider} from "./contexs/CustomerContex";
 function App() {
   return <div>
+       <CustomerProvider>
     <BrowserRouter> 
       <Routes>
         <Route path="/" element={<Home/>}/>
@@ -101,6 +103,7 @@ function App() {
         <Route path="/setting" element={<Setting/>}/>
       </Routes>
   </BrowserRouter>
+    </CustomerProvider>
   </div>  
 }
 export default App;
