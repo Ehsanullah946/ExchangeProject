@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import Button from '../Button';
 import styles from './Manage.module.css'
-import {CustomerProvider,useCustomer} from "../../contexs/CustomerContex"
+import {useContexts} from "../../contexs/AppContexts"
 function Customer() {
-      const {addCustomer,customer} = useCustomer();
+      const {addCustomer,customer} = useContexts();
       const [formData,setFormData]=useState({
         id:"",
         firstName:"",
@@ -68,8 +68,8 @@ function Customer() {
             <input type="text" onChange={handleChage} value={formData.lastName} name='lastName' />
             <input type="text" onChange={handleChage} value={formData.fatherName} name='fatherName' />
             <select name="maritalStatus" value={formData.maritalStatus} id="" onChange={handleChage}>
-                <option value="" >select</option>
-                <option value="single" >single</option>
+                <option value="">select</option>
+                <option value="single">single</option>
                 <option value="marid">Marid</option>
             </select>
             <input type="text" name='job' onChange={handleChage}  value={formData.job}/>
@@ -107,12 +107,12 @@ function Customer() {
             <input type="text" name='email'  onChange={handleChage} value={formData.email} />
             <input type="text" name='botChatId'  onChange={handleChage} value={formData.botChatId} />
            </div>
-           <button type='submit'>submit</button>
            <div className={styles.picture}>
             <img src="/about.jpg" alt="not found" />
             <Button type="primary">Take Picture</Button>
            </div>
         </form>
+      
       </div>
       <div className='table'>
         <table border="1">

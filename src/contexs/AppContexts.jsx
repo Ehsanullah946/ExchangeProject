@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import { createContext } from "react";
 
- const CustomerContext =createContext();
- function CustomerProvider({children}){
-    const [customer,setCustomer]=useState([]);
+ const AppContexts =createContext();
+ function AppProvider({children}){  
+     const [customer,setCustomer]=useState([]);
+     const [branch,setBranch]=useState([]);
+     
      const addCustomer=(customer)=> {
         // try {
         //     const response=await fetch('.api/customer',
@@ -16,23 +18,27 @@ import { createContext } from "react";
         //     } catch (error) {
         //         console.error("Error addding customer");
         //     }
-     
             setCustomer(prevCustomer=>[...prevCustomer,customer]);
      }
+     const addBranch=(branch)=>{
+        setBranch((prevBranch)=>[...prevBranch, branch]);
+     }
+     
+     
      return (
-        <CustomerContext.Provider value={{customer,addCustomer}}>
+        <AppContexts.Provider value={{customer,addCustomer,branch,addBranch}}>
             {children}
-        </CustomerContext.Provider>
+        </AppContexts.Provider>
      )
     
 }
 
-function useCustomer(){
-    const context=useContext(CustomerContext);
+function useContexts(){
+    const context=useContext(AppContexts);
     if(context===undefined){
       throw new Error("Cities used outside the cities provider ");
     }
     return context;
  }
 
-export { CustomerProvider,useCustomer} 
+export { AppProvider,useContexts} 
