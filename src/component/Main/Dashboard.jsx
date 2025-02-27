@@ -10,7 +10,7 @@ function Dashboard() {
              <h1>Cridet</h1>
             </div>
            <span>➕</span>
-             <Button type="boxBtn">more info❓</Button>
+             <Button tip="boxBtn">more info❓</Button>
           </div>
           <div className={styles.box}>
             <div>
@@ -18,7 +18,7 @@ function Dashboard() {
              <h1>Debit</h1>
             </div>
            <span>➖</span>
-             <Button type="boxBtn">more info❓</Button>
+             <Button tip="boxBtn">more info❓</Button>
           </div>
           <div className={styles.box}>
             <div>
@@ -26,7 +26,7 @@ function Dashboard() {
              <h1>Not Received</h1>
             </div>
            <span>💶</span>
-             <Button type="boxBtn">more info❓</Button>
+             <Button tip="boxBtn">more info❓</Button>
           </div>
           <div className={styles.box}>
             <div>
@@ -34,7 +34,7 @@ function Dashboard() {
              <h1>Cash</h1>
             </div>
            <span>💸</span>
-             <Button type="boxBtn">more info❓</Button>
+             <Button tip="boxBtn">more info❓</Button>
           </div>
         </div>
         <table border="1">
