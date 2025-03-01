@@ -42,7 +42,7 @@ function LoginForm() {
          {/* {errors.password && <span>{errors.password.message}</span>} */}
           </div>
          </div>
-         <Button type="formBtn">Submit</Button>
+         <Button tip="formBtn">Submit</Button>
         </form>
       </div>
     )

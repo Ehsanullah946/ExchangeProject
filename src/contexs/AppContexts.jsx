@@ -23,10 +23,24 @@ import { createContext } from "react";
      const addBranch=(branch)=>{
         setBranch((prevBranch)=>[...prevBranch, branch]);
      }
+
+   const updateCustomer = (updatedCustomer) => {
+      setCustomer(prevCustomers => {
+        const customerExists = prevCustomers.some(customer => customer.id === updatedCustomer.id);
+        if (customerExists) {
+          return prevCustomers.map(customer => 
+            customer.id === updatedCustomer.id ? updatedCustomer : customer
+          );
+        } else {
+          return [...prevCustomers, updatedCustomer];
+        }
+      });
+    };
+    
      
      
      return (
-        <AppContexts.Provider value={{customer,addCustomer,branch,addBranch}}>
+        <AppContexts.Provider value={{customer,addCustomer,branch,addBranch,updateCustomer}}>
             {children}
         </AppContexts.Provider>
      )
