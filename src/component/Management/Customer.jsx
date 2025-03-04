@@ -353,9 +353,7 @@ import SearchingPopup from './SearchingPopup';
 // }
 
 function Customer() {  
-  const [isOpen, setIsOpen] = useState(false);  
-  const { addCustomer, customer,updateCustomer } = useContexts();  
-  const [isActive, setIsActive] = useState(false);  
+  const { addCustomer, customer,updateCustomer,setIsActive,setIsOpen,isActive,isOpen } = useContexts();  
   const [formData, setFormData] = useState({
     id: "",
     firstName: "",
@@ -373,9 +371,7 @@ function Customer() {
     email: "",
     botChatId: ''
   });
-
   const [lastSavedData, setLastSavedData] = useState({ ...formData });
-
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -383,34 +379,11 @@ function Customer() {
       [name]: value
     }));
   }
-
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   addCustomer(formData); 
-  //   setLastSavedData(formData); 
-  //   setFormData({
-  //     id: "",
-  //     firstName: "",
-  //     lastName: "",
-  //     fatherName: "",
-  //     maritalStatus: "",
-  //     job: "",
-  //     loanLimit: "",
-  //     nationalCard: "",
-  //     language: "",
-  //     permenentAddress: "",
-  //     currentAddress: "",
-  //     phoneNumber: "",
-  //     whatsapp: "",
-  //     email: "",
-  //     botChatId: ''
-  //   }); // Reset form after submission
-  // }
   async function handleSubmit(e) {
     e.preventDefault();
     if (isActive && formData.id) {
       updateCustomer(formData); 
-    } else {
+    }else {
       addCustomer(formData);
     }  
     setLastSavedData(formData);
@@ -437,8 +410,7 @@ function Customer() {
     e.preventDefault();
     setIsOpen(true);
   }
-
-
+  
   function handleEdit(e) {
     setIsActive(true);
     e.preventDefault();
@@ -493,9 +465,7 @@ function Customer() {
             <label>Job:</label>
             <label>Loan Limit:</label>
           </div>
-
           <div className={styles.inputPart1}>
-          
             <input
               type="text"
               required

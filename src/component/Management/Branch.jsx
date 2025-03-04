@@ -2,20 +2,16 @@
 import Button from '../Button';
 import styles from './Manage.module.css'
 import {useContexts} from "../../contexs/AppContexts"
-import { useState } from 'react';
+import { useState } from 'react';  
+import SearchingPopup from './SearchingPopup';
 function Branch() {
-     const{addBranch,branch}=useContexts();
-     const [isActive, setIsActive]=useState(false);
-      function active(e){
-        setIsActive(true)
-        e.preventDefault();
-      }
-      function cancle(e){
-        e.preventDefault();
-        setIsActive(false)
-      }
-     const [formData,setFormData]=useState({
-             id:"",
+     const{addBranch,branch,isActive,setIsActive,isOpen,setIsOpen,updateBranch}=useContexts();
+     function openSearch(e) {
+       e.preventDefault();
+       setIsOpen(true);
+      }     
+      const [formData,setFormData]=useState({
+            id:"",
              firstName:"",
              lastName:'',
              fatherName:'',
@@ -32,34 +28,76 @@ function Branch() {
              email:"",
              botChatId:''
            });
+           const [lastSavedData, setLastSavedData] = useState({ ...formData });
            function handleChage(e){
             const {name,value}=e.target;
             setFormData({...formData,[name]:value});
            }
-          async function  handleSubmit(e){
-             e.preventDefault();
-             addBranch(formData);
-             setFormData({
-               id:"",
-               firstName:"",
-               lastName:'',
-               fatherName:'',
-               maritalStatus:"",
-               job:"",
-               loanLimit:"",
-               charge:'',
-               nationalCard:'',
-               language:"",
-               permenentAddress:"",
-               currentAddress:"",
-               phoneNumber:"",
-               whatsapp:"",
-               email:"",
-               botChatId:''
-             })
-           }
+           async function handleSubmit(e) {
+            e.preventDefault();
+            if (isActive && formData.id) {
+              updateBranch(formData); 
+            } else {
+              addBranch(formData);
+            }  
+            setLastSavedData(formData);
+            setFormData({
+              id:"",
+              firstName:"",
+              lastName:'',
+              fatherName:'',
+              maritalStatus:"",
+              job:"",
+              loanLimit:"",
+              charge:'',
+              nationalCard:'',
+              language:"",
+              permenentAddress:"",
+              currentAddress:"",
+              phoneNumber:"",
+              whatsapp:"",
+              email:"",
+              botChatId:''
+            });
+          }
+           function cancel(e) {
+            e.preventDefault();
+            setIsActive(false);
+            setFormData(lastSavedData); 
+          } 
+          function active(e) {
+            setIsActive(true);
+            setFormData({
+              id:"",
+              firstName:"",
+              lastName:'',
+              fatherName:'',
+              maritalStatus:"",
+              job:"",
+              loanLimit:"",
+              charge:'',
+              nationalCard:'',
+              language:"",
+              permenentAddress:"",
+              currentAddress:"",
+              phoneNumber:"",
+              whatsapp:"",
+              email:"",
+              botChatId:''
+            });
+            e.preventDefault();
+          }
+          function handleEdit(e) {
+            setIsActive(true);
+            e.preventDefault();
+            const branchToEdit = branch.find(cust => cust.id === formData.id);
+            if (branchToEdit) {
+              setFormData(branchToEdit);
+            }
+          }
     return (
       <>
+      {isOpen ? <SearchingPopup/> : 
         <div className={styles.container}>
         <form action="POST" onSubmit={handleSubmit}>
           <div className={styles.formContainer}>
@@ -125,18 +163,19 @@ function Branch() {
           </div>
           {isActive ? <> 
             <Button tip="primary" type="submit">save</Button>
-            <Button tip="primary" onClick={cancle} type="reset">reset</Button>
+            <Button tip="primary" onClick={cancel} type="reset">reset</Button>
         </>
         :
         <>
         <Button tip="primary" onClick={active}>New</Button>
-        <Button tip="primary">Edit</Button>
+        <Button tip="primary" onClick={handleEdit}>Edit</Button>
         <Button tip="primary">Delete</Button>
-        <Button tip="primary">Search</Button>
+        <Button tip="primary" onClick={openSearch}>Search</Button>
         </>
         }
         </form>
       </div>
+      }
       <div className='table'>  
       <table border="1">
       <thead>

@@ -44,7 +44,7 @@
     flex-direction: column;
 }
 .labelPart2 label{
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 .inputPart2 textarea{
     border: 1px solid black;

@@ -5,54 +5,68 @@ import { createContext } from "react";
  function AppProvider({children}){  
      const [customer,setCustomer]=useState([]);
      const [branch,setBranch]=useState([]);
-     
+     const [employee,setEmployee]=useState([]);
+     const [isOpen, setIsOpen] = useState(false);  
+     const [isActive, setIsActive] = useState(false); 
+
+ // try {
+ //     const response=await fetch('.api/customer',
+ //          {method:"POST",
+ //          headers:{'Content-type':'application/json'},
+ //          body:JSON.stringify(CustomerData),
+ //        })
+ //         const newCustomer=await response.json();
+ // setCustomer(prevCustomer=>[...prevCustomer,customer]);
+ //       } catch (error) {
+ //         console.error("Error addding customer");
+ //       }
+
      const addCustomer=(customer)=> {
-        // try {
-        //     const response=await fetch('.api/customer',
-        //          {method:"POST",
-        //          headers:{'Content-type':'application/json'},
-        //          body:JSON.stringify(CustomerData),
-        //         })
-        //         const newCustomer=await response.json();
-        // setCustomer(prevCustomer=>[...prevCustomer,customer]);
-        //     } catch (error) {
-        //         console.error("Error addding customer");
-        //     }
-            setCustomer(prevCustomer=>[...prevCustomer,customer]);
-     }
+       setCustomer(prevCustomer=>[...prevCustomer,customer]);
+      }
      const addBranch=(branch)=>{
         setBranch((prevBranch)=>[...prevBranch, branch]);
-     }
+     }  
+     const addEmployee=(employee)=>{
+      setEmployee((prevEmployee)=>[...prevEmployee,employee]);
+     } 
 
-   const updateCustomer = (updatedCustomer) => {
-      setCustomer(prevCustomers => {
-        const customerExists = prevCustomers.some(customer => customer.id === updatedCustomer.id);
-        if (customerExists) {
-          return prevCustomers.map(customer => 
-            customer.id === updatedCustomer.id ? updatedCustomer : customer
+    const updateItem = (updatedItem, type) => {
+      const setItems = type === 'customer' ? setCustomer : setBranch;
+      const prevItems = type === 'customer' ? customer : branch;
+      setItems(prevItems => {
+        const itemExists = prevItems.some(item => item.id === updatedItem.id);
+        if (itemExists) {
+          return prevItems.map(item => 
+            item.id === updatedItem.id ? updatedItem : item
           );
         } else {
-          return [...prevCustomers, updatedCustomer];
+          return [...prevItems, updatedItem];
         }
       });
     };
-    
-     
-     
+   
+    const updateBranch = (updatedBranch) => updateItem(updatedBranch, "branch");
+     const updateCustomer = (updatedCustomer) => updateItem(updatedCustomer, "customer");
+     const updateEmployee = (updateEmployee) => updateItem(updateEmployee, "employee");
+                           
      return (
-        <AppContexts.Provider value={{customer,addCustomer,branch,addBranch,updateCustomer}}>
-            {children}
-        </AppContexts.Provider>
-     )
-    
+        <AppContexts.Provider value={{
+        customer,addCustomer,branch,
+        addBranch,isOpen,
+        setIsActive,setIsOpen,isActive,addEmployee,employee,updateEmployee,updateBranch,updateCustomer
+        }}>
+            {children} 
+        </AppContexts.Provider> 
+     )   
 }
-
 function useContexts(){
     const context=useContext(AppContexts);
     if(context===undefined){
-      throw new Error("Cities used outside the cities provider ");
+      throw new Error("data used outside the app provider");
     }
     return context;
  }
-
+ 
 export { AppProvider,useContexts} 
+
