@@ -2,8 +2,9 @@ import { useState } from 'react';
 import Button from '../Button';
 import styles from './Manage.module.css'
 import { useContexts } from '../../contexs/AppContexts';
+import SearchingPopup from './SearchingPopup';
 function Owner() {
-  const { addOwner,owner,setIsActive,setIsOpen,isActive,isOpen } = useContexts();  
+  const { addOwner,owner,setIsActive,setIsOpen,isActive,isOpen,updateOwner } = useContexts();  
   const [formData, setFormData] = useState({
     id: "",
     firstName: "",
@@ -31,9 +32,9 @@ function Owner() {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    if (isActive && formData.id) {
-      updateCustomer(formData); 
-    }else {
+    if(isActive && formData.id) {
+      updateOwner(formData); 
+    }else { 
       addOwner(formData);
     }  
     setLastSavedData(formData);
@@ -64,7 +65,7 @@ function Owner() {
   function handleEdit(e) {
     setIsActive(true);
     e.preventDefault();
-    const ownerToEdit = customer.find(cust => cust.id === formData.id);
+    const ownerToEdit = owner.find(cust => cust.id === formData.id);
     if (ownerToEdit) {
       setFormData(ownerToEdit);
     }

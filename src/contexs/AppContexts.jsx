@@ -7,6 +7,7 @@ import { createContext } from "react";
      const [branch,setBranch]=useState([]);
      const [employee,setEmployee]=useState([]);
      const [owner, setOwner]=useState([]);
+     const [receiver,setReceiver]=useState([]);
      const [isOpen, setIsOpen] = useState(false);  
      const [isActive, setIsActive] = useState(false);
 
@@ -37,6 +38,10 @@ import { createContext } from "react";
       setOwner(preOwner=> [...preOwner,owner]);
      }
 
+     const addReceiver=(receiver)=>{
+      setReceiver(prevReciver=>[...prevReciver,receiver])
+     }
+
 
     // const updateItem = (updatedItem, type) => {
     //   const setItems = type === 'customer' ? setCustomer : setBranch;
@@ -58,6 +63,7 @@ import { createContext } from "react";
         branch: { items: branch, setItems: setBranch },
         employee: { items: employee, setItems: setEmployee },
         owner: { items: owner, setItems: setOwner },
+        receiver:{items:receiver,setItems:setReceiver}
       };
     
       const { items, setItems } = stateMap[type];
@@ -77,6 +83,9 @@ import { createContext } from "react";
     const updateBranch = (updatedBranch) => updateItem(updatedBranch, "branch");
      const updateCustomer = (updatedCustomer) => updateItem(updatedCustomer, "customer");
      const updateEmployee = (updateEmployee) => updateItem(updateEmployee, "employee");
+     const updateOwner = (updateOwner) => updateItem(updateOwner, "owner");
+     const updateReceiver = (updateReceiver) => updateItem(updateReceiver, "receiver");
+    
                            
      return (
         <AppContexts.Provider value={{
@@ -84,7 +93,7 @@ import { createContext } from "react";
         addBranch,isOpen,
         setIsActive,setIsOpen,isActive,addEmployee,
         employee,updateEmployee,updateBranch,updateCustomer,
-        addOwner,owner
+        addOwner,owner,updateOwner,receiver,updateReceiver,addReceiver
         }}>
             {children} 
         </AppContexts.Provider> 

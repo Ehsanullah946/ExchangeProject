@@ -3,7 +3,7 @@ import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './Manage.module.css'
 function Employee() {
-  const{addEmployee,employee,isActive,setIsActive,updateEmployee} = useContexts();
+  const{addEmployee,employee,isActive,setIsActive,updateEmployee,setIsOpen} = useContexts();
   const [formData, setFormData] = useState({
     id:"",
     firstName:"",

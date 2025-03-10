@@ -447,12 +447,12 @@ function Customer() {
     setIsActive(false);
     setFormData(lastSavedData); 
   }
-
+  
   return (
     <>
-  {isOpen ? (
+      {isOpen &&
     <SearchingPopup />
-  ) : (
+      }
     <div className={styles.container}>
       <form action="POST" onSubmit={handleSubmit}>
         <div className={styles.formContainer}>
@@ -630,7 +630,6 @@ function Customer() {
         )}
       </form>
     </div>
-  )}
 
   <div className="table">
     <table border="1">
