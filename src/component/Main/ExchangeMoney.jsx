@@ -5,7 +5,7 @@ function ExchangeMoney() {
         <>
            <div className={styles.container}>
               <form className={styles.formContainer}>
-              <div className={styles.labelPart}>
+              <div className={styles.labelPart1}>
                   <label>Number:</label>
                   <label>Sel Currency</label>
                   <label>Purches Currency:</label>
@@ -16,7 +16,7 @@ function ExchangeMoney() {
                   </div>
                   <label>Purchase Amount:</label>
               </div>
-              <div className={styles.inputPart}>
+              <div className={styles.inputPart1}>
                   <input type="text" name="number"/>
                   <select>
                       <option>AFG</option>

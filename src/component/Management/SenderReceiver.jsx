@@ -95,9 +95,9 @@ function SenderReceiver() {
              <label>Job:</label>
            </div>
            <div className={styles.inputPart1}>
-            <input type="text" name='id' value={formData.id} onChange={handleChange} disabled={!isActive}  />
-            <input type="text" name='firstName' value={formData.firstName} onChange={handleChange} disabled={!isActive} />
-            <input type="text" name='lastName' value={formData.lastName}  onChange={handleChange} disabled={!isActive}/>
+            <input type="text" name='id' value={formData.id} onChange={handleChange} disabled={!isActive} required  />
+            <input type="text" name='firstName' value={formData.firstName} onChange={handleChange} disabled={!isActive} required />
+            <input type="text" name='lastName' value={formData.lastName}  onChange={handleChange} disabled={!isActive} />
             <input type="text" name='fatherName' value={formData.fatherName} onChange={handleChange} disabled={!isActive} />
             <select name="maritalStatus" id="" value={formData.maritalStatus} onChange={handleChange} disabled={!isActive}>
                 <option value="single">single</option>

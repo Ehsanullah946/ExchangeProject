@@ -8,6 +8,9 @@ import { createContext } from "react";
      const [employee,setEmployee]=useState([]);
      const [owner, setOwner]=useState([]);
      const [receiver,setReceiver]=useState([]);
+     const [guarantor,setGuarantor]=useState([]);
+     const [changer,setChanger]=useState([]);
+     const [createUser,setCreateUser]=useState([]);
      const [isOpen, setIsOpen] = useState(false);  
      const [isActive, setIsActive] = useState(false);
 
@@ -42,6 +45,17 @@ import { createContext } from "react";
       setReceiver(prevReciver=>[...prevReciver,receiver])
      }
 
+     const addGuarantor=(guarantor)=>{
+      setGuarantor(preGuarantor=> [...preGuarantor,guarantor])
+     }
+     const addChanger=(changer)=>{
+      setChanger(prevChanger=> [...prevChanger,changer])
+     }
+
+     const addCreateUser=(createUser)=>{
+       setCreateUser(prevCreateUser=>[...prevCreateUser,createUser])
+     }
+
 
     // const updateItem = (updatedItem, type) => {
     //   const setItems = type === 'customer' ? setCustomer : setBranch;
@@ -63,8 +77,12 @@ import { createContext } from "react";
         branch: { items: branch, setItems: setBranch },
         employee: { items: employee, setItems: setEmployee },
         owner: { items: owner, setItems: setOwner },
-        receiver:{items:receiver,setItems:setReceiver}
+        receiver:{items:receiver,setItems:setReceiver},
+        guarantor:{items:guarantor,setItems:setGuarantor},
+        changer:{items:changer,setItems:setChanger},
+        createUser:{items:createUser,setItems:setCreateUser},
       };
+      
     
       const { items, setItems } = stateMap[type];
     
@@ -85,6 +103,9 @@ import { createContext } from "react";
      const updateEmployee = (updateEmployee) => updateItem(updateEmployee, "employee");
      const updateOwner = (updateOwner) => updateItem(updateOwner, "owner");
      const updateReceiver = (updateReceiver) => updateItem(updateReceiver, "receiver");
+     const updateGuarantor = (updateGuarantor) => updateItem(updateGuarantor, "guarantor");
+     const updateChanger = (updateChanger) => updateItem(updateChanger, "changer");
+     const updateCreateUser = (updateCreateUser) => updateItem(updateCreateUser, "createUser");
     
                            
      return (
@@ -93,12 +114,15 @@ import { createContext } from "react";
         addBranch,isOpen,
         setIsActive,setIsOpen,isActive,addEmployee,
         employee,updateEmployee,updateBranch,updateCustomer,
-        addOwner,owner,updateOwner,receiver,updateReceiver,addReceiver
+        addOwner,owner,updateOwner,receiver,updateReceiver,addReceiver,
+        addGuarantor,updateGuarantor,guarantor,addChanger,changer,updateChanger,
+        addCreateUser,updateCreateUser,createUser
         }}>
             {children} 
         </AppContexts.Provider> 
      )   
 }
+
 function useContexts(){
     const context=useContext(AppContexts);
     if(context===undefined){

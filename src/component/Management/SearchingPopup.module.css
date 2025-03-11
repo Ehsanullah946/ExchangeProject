@@ -1,0 +1,23 @@
+.searchContainer{
+        width: fit-content;
+        margin:auto;
+        padding: 20px 20px 6px 60px;
+        border: 1px solid rgb(34, 255, 0);    
+}
+.formContain{
+    display: flex;
+
+}
+.labelPart{
+    display: flex;
+    flex-direction: column;
+}
+.labelPart label{
+    font-size:15px;
+}
+.inputPart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 25px;
+}

@@ -450,9 +450,9 @@ function Customer() {
   
   return (
     <>
-      {isOpen &&
+      {isOpen ?
     <SearchingPopup />
-      }
+      :
     <div className={styles.container}>
       <form action="POST" onSubmit={handleSubmit}>
         <div className={styles.formContainer}>
@@ -542,7 +542,7 @@ function Customer() {
               value={formData.language}
               onChange={handleChange}
               disabled={!isActive}
-            >
+              >
               <option value="english">English</option>
               <option value="dari">دری</option>
               <option value="pashto">پشتو</option>
@@ -630,6 +630,7 @@ function Customer() {
         )}
       </form>
     </div>
+          }
 
   <div className="table">
     <table border="1">

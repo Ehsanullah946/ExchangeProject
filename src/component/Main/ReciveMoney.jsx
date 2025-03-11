@@ -5,7 +5,7 @@ function ReciveMoney() {
         <>
      <div className={styles.container}>
         <form className={styles.formContainer}>
-        <div className={styles.labelPart}>
+        <div className={styles.labelPart1}>
             <label>Guarantor:</label>
             <label>Number:</label>
             <label>Transfer</label>
@@ -15,7 +15,7 @@ function ReciveMoney() {
             <label>charges:</label>
             <label>pass charge:</label>
         </div>
-        <div className={styles.inputPart}>
+        <div className={styles.inputPart1}>
             <select>
                 <option>Ehsan</option>
                 <option>Ali</option>

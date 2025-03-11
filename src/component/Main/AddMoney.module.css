@@ -1,79 +1,52 @@
-.addContainer{
-    width: 75%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-around;
-    border: 2px double rgb(34, 255, 0);
-    margin-left: 200px;
-    padding-top: 10px;
-    padding-left: 100px;
+
+.container{
+    width: fit-content;
+    margin:auto;
+    padding: 20px 20px 6px 60px;
+    border: 1px solid rgb(34, 255, 0);
 }
-.addSection input,
-input[type="text"]{
-    height: 20px;
-    font-size: 12px;
+.formContainer{
+  display: flex;  
+  justify-content: space-evenly;  
+  margin-bottom: 10px;
 }
-.addContainer textarea{
-    height:80px;
-    border: 2px solid black;
-    font-size: 12px;
+.inputPart1{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 20px;
 }
-.addSection select{
-    height: 20px;
-    width: 220px;
-}
-.addSection label{
+.labelPart1{
     display: flex;
-    font-size: 12px;
-    text-align: center;
+    flex-direction: column;
+    /* justify-content: space-around; */
+} 
+.labelPart1 label,
+.labelPart2 label,
+.labelPart3 label{
+    font-size: 12px; 
+    width: 100px;
 }
-.imageSection{
-    /* padding-top: 50px; */
-    text-align: center;
-    display: flex;
-    justify-content: space-around;
-}
-.imageSection img{
-height: 150px;
-}
-.imageSection .btn{
-   display: flex;
-   flex-direction: column;  
-}
-.btn button{
-    margin: 10px;
-    background-color: yellow;
-    border-radius: 10px;
-    padding: 5px;
-    border: 0;
-}
-input[type="submit"],
-input[type="reset"]{
-   width: 115px;
-   background-color: blue;
-   color: white;
-   margin-top:5px;
-   font-size: 12px;
-   font-weight: 700;
-}
-input[type="reset"]{
+.labelPart2{
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
-.Sbtn{
-    padding-bottom: 10px;
+
+.labelPart1 label{
+    margin-bottom: 8px;
 }
-.title{
-     text-align: center; 
-}
-input[type="submit"]:hover,
-input[type="reset"]:hover{
-    background-color: aqua;
-}
+
+.picture{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+} 
+
 table{
     width: 100%;
     text-align: center;
 }
 
 
-
-
+ 
