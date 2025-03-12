@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { createContext } from "react";
+import AcountToAcount from "../component/Main/AcountToAcount";
 
  const AppContexts =createContext();
  function AppProvider({children}){  
@@ -11,6 +12,13 @@ import { createContext } from "react";
      const [guarantor,setGuarantor]=useState([]);
      const [changer,setChanger]=useState([]);
      const [createUser,setCreateUser]=useState([]);
+     const [deposit,setDeposit]=useState([]);
+     const [withDrow,setWithDrow]=useState([]);
+     const [accountToAccount,setAccountToAccount]=useState([]);
+     const [sendMoney,setSendMoney]=useState([]);
+     
+     
+
      const [isOpen, setIsOpen] = useState(false);  
      const [isActive, setIsActive] = useState(false);
 
@@ -55,6 +63,21 @@ import { createContext } from "react";
      const addCreateUser=(createUser)=>{
        setCreateUser(prevCreateUser=>[...prevCreateUser,createUser])
      }
+     const DepositMoney=(deposit)=>{
+       setDeposit(prevDeposit=>[...prevDeposit,deposit]);
+     }
+
+     const withDrowMoney=(withDrow)=>{
+      setWithDrow(prevWithDrow=>[...prevWithDrow,withDrow]);
+
+     }
+     const accountToAccountMoney=(accountToAccount)=>{
+      setAccountToAccount(prevAccountToAccount=> [...prevAccountToAccount,accountToAccount])
+     }
+    
+     const addSendMoney=(sendMoney)=>{
+      setSendMoney(prevSendMoney=> [...prevSendMoney,sendMoney])
+     }
 
 
     // const updateItem = (updatedItem, type) => {
@@ -81,6 +104,10 @@ import { createContext } from "react";
         guarantor:{items:guarantor,setItems:setGuarantor},
         changer:{items:changer,setItems:setChanger},
         createUser:{items:createUser,setItems:setCreateUser},
+        deposit:{items:deposit,setItems:setDeposit},
+        withDrow:{items:withDrow,setItems:setWithDrow},
+        accountToAccount:{items:accountToAccount,setItems:setAccountToAccount},
+        sendMoney:{items:sendMoney,setItems:setSendMoney},
       };
       
     
@@ -106,6 +133,10 @@ import { createContext } from "react";
      const updateGuarantor = (updateGuarantor) => updateItem(updateGuarantor, "guarantor");
      const updateChanger = (updateChanger) => updateItem(updateChanger, "changer");
      const updateCreateUser = (updateCreateUser) => updateItem(updateCreateUser, "createUser");
+     const updateDeposit = (updateDeposit) => updateItem(updateDeposit, "deposit");
+     const updateWithDrow = (updateWithDrow) => updateItem(updateWithDrow, "withDrow");
+     const updateAccountToAccount=(updateAccountToAccount)=> updateItem(updateAccountToAccount,"accountToAccount");
+     const updateSendMoney=(updateSendMoney)=>updateItem(updateSendMoney,"sendMoney");
     
                            
      return (
@@ -116,7 +147,9 @@ import { createContext } from "react";
         employee,updateEmployee,updateBranch,updateCustomer,
         addOwner,owner,updateOwner,receiver,updateReceiver,addReceiver,
         addGuarantor,updateGuarantor,guarantor,addChanger,changer,updateChanger,
-        addCreateUser,updateCreateUser,createUser
+        addCreateUser,updateCreateUser,createUser,DepositMoney,updateDeposit,deposit,
+        withDrow,updateWithDrow,withDrowMoney,updateAccountToAccount,
+        accountToAccount,accountToAccountMoney,sendMoney,addSendMoney,updateSendMoney
         }}>
             {children} 
         </AppContexts.Provider> 
