@@ -1,10 +1,100 @@
+import { useState } from 'react';
+import { useContexts } from '../../contexs/AppContexts';
+import Button from '../Button';
 import styles from './SAR.module.css'
 function ReciveMoney() {
-    const date=new Date();
+    const{receiveMoney,updateReceiveMoney,addReceiveMoney,isActive,setIsActive}=useContexts();
+    const [formData,setFormData]=useState({
+        branch:"",
+        id:"",  
+        transfer:"",
+        receiver:"",
+        amount:"",
+        currency:"",
+        charge:"",
+        chargeType:"",
+        passCharge:"",
+        date:`${new Date()}`,
+        customer:"",
+        passTo:"",
+        passNumber:"",
+        guarantor:"",
+        description:""
+    });
+
+    const [lastSavedData,setLastSavedData]=useState({...formData});
+    const handleChange=(e)=>{
+         e.preventDefault();
+         const {name,value}=e.target;
+         setFormData((prevState)=>({...prevState,[name]:value}))
+    }
+    function handleSubmit(e){
+        e.preventDefault();
+        if(isActive && formData.id){
+            updateReceiveMoney(formData)
+
+        }else{
+            addReceiveMoney(formData)
+        }
+        setLastSavedData(formData)
+        setFormData({
+        branch:"",
+        id:"",  
+        transfer:"",
+        receiver:"",
+        amount:"",
+        currency:"",
+        charge:"",
+        chargeType:"",
+        passCharge:"",
+        date:`${new Date()}`,
+        customer:"",
+        passTo:"",
+        passNumber:"",
+        guarantor:"",
+        description:""
+        })
+    }
+    function handleEdit(e){
+        e.preventDefault();
+        setIsActive(true)
+        const receiveMoneyToEdit=receiveMoney.find(curs=> curs.id===formData.id);
+        if(receiveMoneyToEdit){
+            setFormData(receiveMoneyToEdit);
+        }
+    }
+    function active(e){
+        e.preventDefault();
+        setIsActive(true)
+        setFormData({
+            branch:"",
+            id:"",  
+            transfer:"",
+            receiver:"",
+            amount:"",
+            currency:"",
+            charge:"",
+            chargeType:"",
+            passCharge:"",
+            date:`${new Date()}`,
+            customer:"",
+            passTo:"",
+            passNumber:"",
+            guarantor:"",
+            description:""
+        })
+        
+    }
+    function cancel(e){
+        e.preventDefault();
+        setIsActive(false)
+        setFormData(lastSavedData);
+    }
     return (
         <>
-     <div className={styles.container}>
-        <form className={styles.formContainer}>
+ <div className={styles.container}>
+    <form action='POST' onSubmit={handleSubmit} >
+      <div className={styles.formContainer}>
         <div className={styles.labelPart1}>
             <label>Guarantor:</label>
             <label>Number:</label>
@@ -15,33 +105,41 @@ function ReciveMoney() {
             <label>charges:</label>
             <label>pass charge:</label>
         </div>
-        <div className={styles.inputPart1}>
-            <select>
-                <option>Ehsan</option>
-                <option>Ali</option>
-                <option>Mohmod</option>
-            </select> 
-            <input type="text" name="number"/>
-            <input type="text" name="SName"/>
-            <input type='text' name='Rname'/>
-            <input type="text" name='amount'/>
-            <input type="text" name='currency'/>
-            <div className={styles.charge} >
-            <input type="text" name='charge'/>
-            <select>
-                <option>AFG</option>
-                <option>KD</option>
-                <option>USD</option>
-            </select>
-            </div>
-            <div className={styles.charge} >
-            <input type="text" name='placeCharge'/>
-            <select>
-                <option>AFG</option>
-                <option>KD</option>
-                <option>USD</option>
-            </select>
-            </div>
+      <div className={styles.inputPart1}>
+        <select name='branch' required value={formData.branch} onChange={handleChange} disabled={!isActive}>
+            <option value="">select</option>
+            <option value={'Ehsan'}>Ehsan</option>
+            <option value={'Ali'}>Ali</option>
+            <option value={'Mahmod'}>Mohmod</option>
+        </select>                                        
+        <input type="text" required name="id" value={formData.id} onChange={handleChange} disabled={!isActive}/>
+        <input type="text" required name="transfer" value={formData.transfer} onChange={handleChange} disabled={!isActive}/>
+        <input type='text' required name='receiver' value={formData.receiver}  onChange={handleChange} disabled={!isActive}/>
+        <input type="text" required name='amount' value={formData.amount} onChange={handleChange} disabled={!isActive}/>
+        <select name='currency' required value={formData.currency} onChange={handleChange} disabled={!isActive}>
+            <option value="">Cur</option>
+            <option value={"AFG"}>AFG</option>
+            <option value={"KD"}>KD</option>
+            <option value={"USD"}>USD</option>
+        </select>
+        <div className={styles.charge} >
+        <input type="text" name='charge' value={formData.charge} onChange={handleChange} disabled={!isActive}/>
+        <select name='chargeType'  onChange={handleChange} disabled={!isActive}>
+            <option>Cur</option>
+            <option value={"AFG"}>AFG</option>
+            <option value={"KD"}>KD</option>
+            <option value={"USD"}>USD</option>
+        </select>
+        </div>
+        <div className={styles.charge} >
+        <input type="text" name='placeCharge' value={formData.placeCharge} onChange={handleChange} disabled={!isActive}/>
+        <select  onChange={handleChange} disabled={!isActive}>
+            <option value="">Cur</option>
+            <option  value={"AFG"}>AFG</option>
+            <option value={"KD"}>KD</option>
+            <option value={"USD"}>USD</option>
+        </select>
+        </div>
         </div>
         <div className={styles.labelPart2}>
             <label>Date</label>
@@ -58,30 +156,31 @@ function ReciveMoney() {
             <label>Description</label>
         </div>
         <div className={styles.inputPart2}>
-        <input type="text" value={date}/>
+        <input type="text" name='date' onChange={handleChange} disabled={!isActive} value={formData.date}/>
         <div>
-        <select>
+        <select name='customer' value={formData.customer} onChange={handleChange} disabled={!isActive}>
+            <option>select</option>
             <option>Ehsan</option>
             <option>Ali</option>
             <option>Mohmod</option>
         </select>
         <button>➕</button>
         </div>
-        <select>
+        <select name='passTo' value={formData.passTo} onChange={handleChange} disabled={!isActive}>
             <option>Ehsan</option>
             <option>Ali</option>
             <option>Mohmod</option>
         </select>
-        <input type="text" />
+        <input type="text" name='passNumber' value={formData.passNumber} onChange={handleChange} disabled={!isActive} />
         <div>
-        <select>
-        <option>Ehsan</option>
+        <select name='guarantor' value={formData.guarantor} onChange={handleChange} disabled={!isActive}>
+        <option>Ehsan</option>   
         <option>Ali</option>
         <option>Mohmod</option>
         </select>
         <button>➕</button>
         </div>
-        <textarea/>  
+        <textarea value={formData.description} name='description' onChange={handleChange} disabled={!isActive}/>  
         </div>
         <div className={styles.rightSection}>
             <img src="/about.jpg" alt="not found" />
@@ -90,26 +189,60 @@ function ReciveMoney() {
             <button>select</button>
             </div>
         </div> 
+            </div>
+            {isActive ? (
+          <>
+            <Button tip="primary" htmlType="submit" >
+              Save
+            </Button>
+            <Button tip="primary" type="reset" onClick={cancel}>
+              Cancel
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button tip="primary" onClick={active}>
+              New
+            </Button>
+            <Button tip="primary" onClick={handleEdit}>
+              Edit
+            </Button>
+            <Button tip="primary">Delete</Button>
+            <Button tip="primary">
+              Search
+            </Button>
+          </>
+        )} 
         </form>
      </div>
      <div className='table'>
     <table border="1">
-          <tr>
-            <th>Transfer NO</th>
-            <th>ّAmount</th>
-            <th>Currency</th>
-            <th>Charges Amount</th>
-            <th>Currency</th>
-            <th>Transfer To</th>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Destinitation</th>
-            <th>Pass to</th>
-            <th>Pass No</th>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
+    <thead>
+        <tr>
+        <th>Receive NO</th>
+        <th>sender</th>
+        <th>Receiver</th>
+        <th>Amount</th>
+        <th>Amount Type</th>
+        <th>Charge</th>
+        <th>charge Type</th>
+        <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+     {receiveMoney.map((receiveMoney, index) => (
+        <tr key={receiveMoney.id}>
+        <td>{receiveMoney.id}</td>
+        <td>{receiveMoney.transfer}</td>
+        <td>{receiveMoney.receiver}</td>
+        <td>{receiveMoney.amount}</td>
+        <td>{receiveMoney.currency}</td>
+        <td>{receiveMoney.charge}</td>
+        <td>{receiveMoney.chargeType}</td>
+        <td>{receiveMoney.description}</td>
+        </tr>
+        ))}
+      </tbody>
         </table>
     </div>
    </>

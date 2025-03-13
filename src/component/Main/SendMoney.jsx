@@ -3,9 +3,9 @@ import Button from '../Button';
 import styles from './SAR.module.css'
 import { useState } from 'react';
 function SendMoney() {
-    const{sendMoney,updateSendMoney,addSendMoney,isActive,setIsActive,branch}=useContexts();
+    const{sendMoney,updateSendMoney,addSendMoney,isActive,setIsActive}=useContexts();
     const [formData,setFormData]=useState({
-        Branch:"",
+        branch:"",
         id:"",  
         transfer:"",
         receiver:"",
@@ -36,7 +36,7 @@ function SendMoney() {
         }
         setLastSavedData(formData)
         setFormData({
-        Branch:"",
+        branch:"",
         id:"",  
         transfer:"",
         receiver:"",
@@ -64,7 +64,7 @@ function SendMoney() {
         e.preventDefault();
         setIsActive(true)
         setFormData({
-            Branch:"",
+            branch:"",
             id:"",  
             transfer:"",
             receiver:"",
@@ -78,17 +78,13 @@ function SendMoney() {
             exchageMoney:"",
             guarantor:"",
             description:""
-        })
-        
+        })    
     }
     function cancel(e){
         e.preventDefault();
         setIsActive(false)
         setFormData(lastSavedData);
     }
-
-
-
     return (
         <>
       <div className={styles.container}>
@@ -105,7 +101,7 @@ function SendMoney() {
                 <label>place charge:</label>
             </div>
             <div className={styles.inputPart1}>
-            <select name='branch' required value={formData.Branch} onChange={handleChange} disabled={!isActive}>
+            <select name='branch' required value={formData.branch} onChange={handleChange} disabled={!isActive}>
                 <option value="">select</option>
                 <option value={'Ehsan'}>Ehsan</option>
                 <option value={'Ali'}>Ali</option>

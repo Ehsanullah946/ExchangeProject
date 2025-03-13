@@ -42,7 +42,7 @@ select[name="currency"]{
 }
 .inputPart1 input{
     /* width: 220px; */
-    margin-top: 8px;
+    margin-top: 5px;
 } 
 .inputPart2 input,
 .inputPart2 select{

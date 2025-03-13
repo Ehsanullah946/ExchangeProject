@@ -16,12 +16,13 @@ import AcountToAcount from "../component/Main/AcountToAcount";
      const [withDrow,setWithDrow]=useState([]);
      const [accountToAccount,setAccountToAccount]=useState([]);
      const [sendMoney,setSendMoney]=useState([]);
-     
-     
+     const [receiveMoney,setReceiveMoney]=useState([]);
+
 
      const [isOpen, setIsOpen] = useState(false);  
      const [isActive, setIsActive] = useState(false);
 
+     
 
  // try {
  //     const response=await fetch('.api/customer',
@@ -79,6 +80,9 @@ import AcountToAcount from "../component/Main/AcountToAcount";
       setSendMoney(prevSendMoney=> [...prevSendMoney,sendMoney])
      }
 
+     const addReceiveMoney=(receiveMoney)=> { 
+      setReceiveMoney(prevReceiveMoney=>[...prevReceiveMoney,receiveMoney])
+     }
 
     // const updateItem = (updatedItem, type) => {
     //   const setItems = type === 'customer' ? setCustomer : setBranch;
@@ -108,6 +112,7 @@ import AcountToAcount from "../component/Main/AcountToAcount";
         withDrow:{items:withDrow,setItems:setWithDrow},
         accountToAccount:{items:accountToAccount,setItems:setAccountToAccount},
         sendMoney:{items:sendMoney,setItems:setSendMoney},
+        receiveMoney:{items:receiveMoney,setItems:setReceiveMoney}
       };
       
     
@@ -137,6 +142,7 @@ import AcountToAcount from "../component/Main/AcountToAcount";
      const updateWithDrow = (updateWithDrow) => updateItem(updateWithDrow, "withDrow");
      const updateAccountToAccount=(updateAccountToAccount)=> updateItem(updateAccountToAccount,"accountToAccount");
      const updateSendMoney=(updateSendMoney)=>updateItem(updateSendMoney,"sendMoney");
+     const updateReceiveMoney=(updateReceiveMoney)=>updateItem(updateReceiveMoney,"receiveMoney")
     
                            
      return (
@@ -149,7 +155,9 @@ import AcountToAcount from "../component/Main/AcountToAcount";
         addGuarantor,updateGuarantor,guarantor,addChanger,changer,updateChanger,
         addCreateUser,updateCreateUser,createUser,DepositMoney,updateDeposit,deposit,
         withDrow,updateWithDrow,withDrowMoney,updateAccountToAccount,
-        accountToAccount,accountToAccountMoney,sendMoney,addSendMoney,updateSendMoney
+        accountToAccount,accountToAccountMoney,sendMoney,addSendMoney,updateSendMoney,
+        receiveMoney,updateReceiveMoney,addReceiveMoney
+
         }}>
             {children} 
         </AppContexts.Provider> 
