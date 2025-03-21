@@ -1,10 +1,13 @@
+import { Outlet } from "react-router-dom"
 import Header from "../component/Header"
+import SettingNav from "../component/Setting/SettingNav"
 
 function Setting() {
     return (
         <div>
-            <Header/>
-            setting part
+             <Header/>
+             <SettingNav/>
+             <Outlet/>
         </div>
     )
 }

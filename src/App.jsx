@@ -44,6 +44,15 @@ import DaybookReport from "./component/Reports/DaybookReport";
 import WalletReport from "./component/Reports/WalletReport";
 import RatesReport from "./component/Reports/RatesReport";
 import {AppProvider} from "./contexs/AppContexts";
+import General from "./component/Setting/General";
+import Accessing from "./component/Setting/Accessing";
+import AutoBackup from "./component/Setting/AutoBackup";
+import Database from "./component/Setting/Database";
+import MoneyType from "./component/Setting/MoneyType";
+import MoreSetting from "./component/Setting/MoreSetting";
+import Print from "./component/Setting/Print";
+import Them from "./component/Setting/Them";
+import Connecting from "./component/Setting/Connecting";
 function App() {
   return <div>
       <AppProvider>
@@ -100,7 +109,17 @@ function App() {
          <Route path="walletReport" element={<WalletReport/>}/>
          <Route path="rateReport" element={<RatesReport/>}/>
         </Route>
-        <Route path="/setting" element={<Setting/>}/>
+        <Route path="/setting" element={<Setting/>}>
+         <Route path="general" element={<General/>}/>
+         <Route path="moneyType" element={<MoneyType/>}/>
+         <Route path="them" element={<Them/>}/>
+         <Route path="connecting" element={<Connecting/>}/>
+         <Route path="autoBackup" element={<AutoBackup/>}/>
+         <Route path="accessing" element={<Accessing/>}/>
+         <Route path="print" element={<Print/>}/>
+         <Route path="database" element={<Database/>}/>
+         <Route path="moreSetting" element={<MoreSetting/>}/>
+        </Route>
       </Routes>
   </BrowserRouter>
     </AppProvider>
