@@ -5,7 +5,7 @@ function Header() {
         <nav className={styles.nav}>
           <ul>
             <li>
-                <NavLink to="/main">Main Page</NavLink>
+                <NavLink className={styles.active} to="/main">Main Page</NavLink>
             </li>
             <li>
                 <NavLink to="/Bank">Bank</NavLink>

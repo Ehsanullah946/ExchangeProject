@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import styles from "../Navstyles/appNav.module.css"
 function ManagementNav() {
     return (
@@ -27,7 +27,7 @@ function ManagementNav() {
             </li>              
             <li>
                 <NavLink to="branch">Branch</NavLink>
-            </li>              
+            </li>                          
           </ul>
         </nav>
     )

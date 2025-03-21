@@ -3,6 +3,23 @@ import Button from '../Button';
 import styles from './Manage.module.css'
 import {useContexts} from "../../contexs/AppContexts"
 import SearchingPopup from './SearchingPopup';
+const data={
+  id: "",
+  firstName: "",
+  lastName: "",
+  fatherName: "",
+  maritalStatus: "",
+  job: "",
+  loanLimit: "",
+  nationalCard: "",
+  language: "",
+  permenentAddress: "",
+  currentAddress: "",
+  phoneNumber: "",
+  whatsapp: "",
+  email: "",
+  botChatId: ''
+}
 // function Customer() {
 //       const [isOpen,setIsOpen]=useState(false);
 //       const {addCustomer,customer} = useContexts();
@@ -354,30 +371,17 @@ import SearchingPopup from './SearchingPopup';
 
 function Customer() {  
   const { addCustomer, customer,updateCustomer,setIsActive,setIsOpen,isActive,isOpen } = useContexts();  
-  const [formData, setFormData] = useState({
-    id: "",
-    firstName: "",
-    lastName: "",
-    fatherName: "",
-    maritalStatus: "",
-    job: "",
-    loanLimit: "",
-    nationalCard: "",
-    language: "",
-    permenentAddress: "",
-    currentAddress: "",
-    phoneNumber: "",
-    whatsapp: "",
-    email: "",
-    botChatId: ''
-  });
+  const [formData, setFormData] = useState(data);
   const [lastSavedData, setLastSavedData] = useState({ ...formData });
   function handleChange(e) {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
+    if (name === 'loanLimit' || name === 'id' || name === 'nationalCard' || name === 'phoneNumber' || name === 'whatsapp') {
+      if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+        setFormData((prevState) => ({ ...prevState, [name]: value }));
+      }
+    } else {
+      setFormData((prevState) => ({ ...prevState, [name]: value }));
+    }
   }
   async function handleSubmit(e) {
     e.preventDefault();
@@ -387,23 +391,7 @@ function Customer() {
       addCustomer(formData);
     }  
     setLastSavedData(formData);
-    setFormData({
-      id: "",
-      firstName: "",
-      lastName: "",
-      fatherName: "",
-      maritalStatus: "",
-      job: "",
-      loanLimit: "",
-      nationalCard: "",
-      language: "",
-      permenentAddress: "",
-      currentAddress: "",
-      phoneNumber: "",
-      whatsapp: "",
-      email: "",
-      botChatId: ""
-    });
+    setFormData(data);
   }
 
   function openSearch(e) {
@@ -422,23 +410,7 @@ function Customer() {
 
   function active(e) {
     setIsActive(true);
-    setFormData({
-      id: "",
-      firstName: "",
-      lastName: "",
-      fatherName: "",
-      maritalStatus: "",
-      job: "",
-      loanLimit: "",
-      nationalCard: "",
-      language: "",
-      permenentAddress: "",
-      currentAddress: "",
-      phoneNumber: "",
-      whatsapp: "",
-      email: "",
-      botChatId: ''
-    });
+    setFormData(data);
     e.preventDefault();
   }
 

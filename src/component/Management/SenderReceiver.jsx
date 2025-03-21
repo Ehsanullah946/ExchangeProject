@@ -2,27 +2,31 @@ import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './Manage.module.css'
+const data={
+  id: "",
+  firstName: "",
+  lastName: "",
+  fatherName: "",
+  maritalStatus: "",
+  job: "",
+  phoneNumber:"",
+  nationalCode:"",
+  premenentAddress:"",
+  currentAddress:"",
+}
 function SenderReceiver() {
   const { addReceiver,receiver,setIsActive,setIsOpen,isActive,isOpen,updateReceiver } = useContexts();  
-  const [formData,setFormData]=useState({
-    id: "",
-    firstName: "",
-    lastName: "",
-    fatherName: "",
-    maritalStatus: "",
-    job: "",
-    phoneNumber:"",
-    nationalCode:"",
-    premenentAddress:"",
-    currentAddress:"",
-  });
+  const [formData,setFormData]=useState(data);
   const [lastSavedData,setlastSavedData]=useState({...formData})
   function handleChange(e){
     const{name,value}=e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
+    if (name === 'loanLimit' || name === 'id' || name === 'nationalCode' || name === 'phoneNumber') {
+      if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+        setFormData((prevState) => ({ ...prevState, [name]: value }));
+      }
+    } else {
+      setFormData((prevState) => ({ ...prevState, [name]: value }));
+    }
   }
   function openSearch(e) {
     e.preventDefault();
@@ -42,18 +46,7 @@ function SenderReceiver() {
     addReceiver(formData)
   }
   setlastSavedData(formData)
-  setFormData({
-    id: "",
-    firstName: "",
-    lastName: "",
-    fatherName: "",
-    maritalStatus: "",
-    job: "",
-    phoneNumber:"",
-    nationalCode:"",
-    premenentAddress:"",
-    currentAddress:"",
-  })
+  setFormData(data)
  }
 
  function handleEdit(e) {
@@ -67,18 +60,7 @@ function SenderReceiver() {
   
   function active(e){
       setIsActive(true)
-      setFormData({
-      id: "",
-      firstName: "",
-      lastName: "",
-      fatherName: "",
-      maritalStatus: "",
-      job: "",
-      phoneNumber:"",
-      nationalCode:"",
-      premenentAddress:"",
-      currentAddress:"",
-    })
+      setFormData(data)
         e.preventDefault();
   }
     return (

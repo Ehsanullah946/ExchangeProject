@@ -4,34 +4,41 @@ import styles from './Manage.module.css'
 import {useContexts} from "../../contexs/AppContexts"
 import { useState } from 'react';  
 import SearchingPopup from './SearchingPopup';
+const data={
+  id:"",
+  firstName:"",
+  lastName:'',
+  fatherName:'',
+  maritalStatus:"",
+  job:"",
+  loanLimit:"",
+  charge:'',
+  nationalCard:'',
+  language:"",
+  permenentAddress:"",
+  currentAddress:"",
+  phoneNumber:"",
+  whatsapp:"",
+  email:"",
+  botChatId:"",
+}
 function Branch() {
      const{addBranch,branch,isActive,setIsActive,isOpen,setIsOpen,updateBranch}=useContexts();
      function openSearch(e) {
        e.preventDefault();
        setIsOpen(true);
       }     
-      const [formData,setFormData]=useState({
-            id:"",
-             firstName:"",
-             lastName:'',
-             fatherName:'',
-             maritalStatus:"",
-             job:"",
-             loanLimit:"",
-             charge:'',
-             nationalCard:'',
-             language:"",
-             permenentAddress:"",
-             currentAddress:"",
-             phoneNumber:"",
-             whatsapp:"",
-             email:"",
-             botChatId:''
-           });
+      const [formData,setFormData]=useState(data);
            const [lastSavedData, setLastSavedData] = useState({ ...formData });
            function handleChage(e){
             const {name,value}=e.target;
-            setFormData({...formData,[name]:value});
+            if (name === 'loanLimit' || name === 'id' || name === 'nationalCard' || name === 'phoneNumber' || name === 'whatsapp') {
+              if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+                setFormData((prevState) => ({ ...prevState, [name]: value }));
+              }
+            } else {
+              setFormData((prevState) => ({ ...prevState, [name]: value }));
+            }
            }
            async function handleSubmit(e) {
             e.preventDefault();
@@ -41,24 +48,7 @@ function Branch() {
               addBranch(formData);
             }  
             setLastSavedData(formData);
-            setFormData({
-              id:"",
-              firstName:"",
-              lastName:'',
-              fatherName:'',
-              maritalStatus:"",
-              job:"",
-              loanLimit:"",
-              charge:'',
-              nationalCard:'',
-              language:"",
-              permenentAddress:"",
-              currentAddress:"",
-              phoneNumber:"",
-              whatsapp:"",
-              email:"",
-              botChatId:''
-            });
+            setFormData(data);
           }
            function cancel(e) {
             e.preventDefault();
@@ -67,24 +57,7 @@ function Branch() {
           } 
           function active(e) {
             setIsActive(true);
-            setFormData({
-              id:"",
-              firstName:"",
-              lastName:'',
-              fatherName:'',
-              maritalStatus:"",
-              job:"",
-              loanLimit:"",
-              charge:'',
-              nationalCard:'',
-              language:"",
-              permenentAddress:"",
-              currentAddress:"",
-              phoneNumber:"",
-              whatsapp:"",
-              email:"",
-              botChatId:''
-            });
+            setFormData(data);
             e.preventDefault();
           }
           function handleEdit(e) {

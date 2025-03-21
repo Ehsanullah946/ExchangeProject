@@ -9,6 +9,7 @@
     background-color: rgb(34, 255, 0);
  
    }
+   
    .nav ul {
     list-style: none;
     display: flex;
@@ -23,6 +24,9 @@
   text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: 600;
+}
+NavLink.active{
+  color: red;
 }
 
 

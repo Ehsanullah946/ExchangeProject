@@ -2,10 +2,8 @@ import { useState } from 'react';
 import styles from './Manage.module.css'
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
-function CreateUser() {
-  const { addCreateUser,createUser,setIsActive,setIsOpen,isActive,updateCreateUser } = useContexts();  
-  const [formData,setFormData]=useState({
-    id: "",
+const data={
+     id: "",
     userName: "",
     password: "",
     email: "",
@@ -13,14 +11,20 @@ function CreateUser() {
     userType:"",
     employee:"",
     privilages:""
-  });
+}
+function CreateUser() {
+  const { addCreateUser,createUser,setIsActive,setIsOpen,isActive,updateCreateUser } = useContexts();  
+  const [formData,setFormData]=useState(data);
   const [lastSavedData,setlastSavedData]=useState({...formData})
   function handleChange(e){
     const{name,value}=e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
+    if (name === 'id' || name === 'whatsapp') {
+      if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+        setFormData((prevState) => ({ ...prevState, [name]: value }));
+      }
+    } else {
+      setFormData((prevState) => ({ ...prevState, [name]: value }));
+    }
   }
   function openSearch(e) {
     e.preventDefault();
@@ -40,16 +44,7 @@ function CreateUser() {
     addCreateUser(formData)
   }
   setlastSavedData(formData)
-  setFormData({
-    id: "",
-    userName: "",
-    password: "",
-    email: "",
-    whatsapp:"",
-    userType:"",
-    employee:"",
-    privilages:""
-  })
+  setFormData(data)
  }
 
  function handleEdit(e) {
@@ -63,16 +58,7 @@ function CreateUser() {
   
   function active(e){
       setIsActive(true)
-      setFormData({
-    id: "",
-    userName: "",
-    password: "",
-    email: "",
-    whatsapp:"",
-    userType:"",
-    employee:"",
-    privilages:""
-    })
+      setFormData(data)
         e.preventDefault();
   }
     return (

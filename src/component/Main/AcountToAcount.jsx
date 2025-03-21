@@ -1,25 +1,29 @@
-
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './AddMoney.module.css'
 import { useState } from 'react';
+const data={
+  id:"",
+  fromAccount:"",
+  toAccount:"",
+  amount:"",
+  date: new Date().toISOString().split('T')[0], 
+  description:""
+}
 function AcountToAcount() {
-    const date=new Date();
     const{updateAccountToAccount,accountToAccount,isActive,setIsActive,accountToAccountMoney}=useContexts();
-
-     const [formData,setFormData]=useState({
-      id:"",
-      fromAccount:"",
-      toAccount:"",
-      amount:"",
-      date:`${new Date()}`,
-      description:""
-     });
+     const [formData,setFormData]=useState(data);
 
      const handleChange=(e)=>{
       e.preventDefault();
       const { name, value } =e.target;
-     setFormData((prevState)=>({...prevState, [name]:value}))  
+      if (name === 'amount' || name === 'id') {
+        if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+          setFormData((prevState) => ({ ...prevState, [name]: value }));
+        }
+      } else {
+        setFormData((prevState) => ({ ...prevState, [name]: value }));
+      } 
      }
 
      const[lastSavedData,setLastSavedData]=useState({...formData});
@@ -32,26 +36,12 @@ function AcountToAcount() {
         accountToAccountMoney(formData)
       }
       setLastSavedData(formData)
-      setFormData({
-        id:"",
-        fromAccount:"",
-        toAccount:"",
-        amount:"",
-        date:`${new Date()}`,
-        description:""
-      }) 
+      setFormData(data) 
      }
      function active(e){
        e.preventDefault();
        setIsActive(true);
-       setFormData({
-        id:"",
-        fromAccount:"",
-        toAccount:"",
-        amount:"",
-        date:`${new Date()}`,
-        description:""
-       })
+       setFormData(data)
      }
      function cancel(e){
       e.preventDefault();
@@ -94,7 +84,7 @@ function AcountToAcount() {
           <option value={"Mahmod"}>Mahmod</option>
         </select>
        <input type="text" name='amount' required value={formData.amount} onChange={handleChange} disabled={!isActive}/>
-       <input type="text" name='date' value={formData.date}/>
+       <input type="date" name='date' value={formData.date} onChange={handleChange} disabled={!isActive}/>
        <textarea value={formData.description} name='description' onChange={handleChange} disabled={!isActive}/>
       </div>
       <div className={styles.picture}>

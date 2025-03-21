@@ -2,23 +2,28 @@ import { useState } from 'react';
 import Button from '../Button';
 import styles from './AddMoney.module.css'
 import { useContexts } from '../../contexs/AppContexts';
+const data={
+  id:"",
+  account:"",
+  amount:"",
+  currency:"",
+  date: new Date().toISOString().split('T')[0], 
+  description:"",
+}
 function WithDrow() {
   const {withDrow,updateWithDrow,isActive,withDrowMoney,setIsActive,setIsOpen}=useContexts();
-  const [formData,setFormData]=useState({
-    id:"",
-    account:"",
-    amount:"",
-    date:`${new Date()}`,
-    description:"",
-  })
+  const [formData,setFormData]=useState(data)
   const [lastSavedData,setLastSavedData]=useState({...formData})
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
+    if (name === 'amount' || name === 'id') {
+      if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+        setFormData((prevState) => ({ ...prevState, [name]: value }));
+      }
+    } else {
+      setFormData((prevState) => ({ ...prevState, [name]: value }));
+    }
   }
   const handleSubmit=(e)=>{
       e.preventDefault();
@@ -28,13 +33,7 @@ function WithDrow() {
         withDrowMoney(formData);
       }
       setLastSavedData(formData);
-      setFormData({
-        id:"",
-        account:"",
-        amount:"",
-        date:`${new Date()}`,
-        description:"",
-      })
+      setFormData(data)
      
   }
   function cancel(e){
@@ -45,13 +44,7 @@ function WithDrow() {
   function active(e){
     e.preventDefault();
     setIsActive(true);
-     setFormData({
-      id:"",
-      account:"",
-      amount:"",
-      date:`${new Date()}`,
-      description:"",
-     })
+     setFormData(data)
   }
    function handleEdit(e){
     e.preventDefault();
@@ -74,18 +67,25 @@ function WithDrow() {
            <label>Account No</label>
           <label>Account</label>
           <label>Amount</label>
+          <label>Currency</label>
         <label htmlFor="">Date</label>
          <label>description</label>
         </div>
         <div className={styles.inputPart1}>
            <input type="text" required value={formData.id} name='id' onChange={handleChange} disabled={!isActive}/>
           <select name="account" required value={formData.account} id="" onChange={handleChange} disabled={!isActive}>
-            <option value={"Ehsanullah"}> Ehsanullah</option>
+            <option value={"Ehsanullah"}>Ehsanullah</option>
             <option value={"Ali"}>Ali</option>
             <option value={"Mahmod"}>Mahmod</option>
           </select>
          <input type="text" className={styles.withdrow} required value={formData.amount} name="amount" onChange={handleChange} disabled={!isActive}/>
-         <input type="text" name='date' value={formData.date} onChange={handleChange} disabled={!isActive}/>
+         <select name="currency" required value={formData.currency} id="" onChange={handleChange} disabled={!isActive}>
+            <option value="">select</option>
+            <option >AFG</option>
+            <option >USA</option>
+            <option >KD</option>
+          </select>
+         <input type="date" name='date' value={formData.date} onChange={handleChange} disabled={!isActive}/>
          <textarea name='description' value={formData.description} onChange={handleChange} disabled={!isActive}/>
         </div>
         <div className={styles.picture}>

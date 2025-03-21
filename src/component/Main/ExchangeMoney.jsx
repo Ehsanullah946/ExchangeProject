@@ -1,10 +1,69 @@
+import { useState } from 'react';
+import { useContexts } from '../../contexs/AppContexts';
 import styles from './SAR.module.css'
+import Button from '../Button';
+const data={
+  id:"",
+  selCurrency:"",
+  purchesCurrency:"",
+  rate:"",
+  selAmount:"",
+  purchesAmount:"",
+  date: new Date().toISOString().split('T')[0], 
+  exchanger:"",
+  customer:"",
+  description:""
+}
 function ExchangeMoney() {
-    const date=new Date();
+    const{exchangeMoney,updateExchangeMoney,addExchangeMoney,isActive,setIsActive}=useContexts();
+    const [formData,setFormData]=useState(data)
+    const [lastSavedData,setLastSavedData]=useState({...formData});
+    function handleChange(e){
+        e.preventDefault();
+        const {name,value}= e.target;
+        if (name === 'amount' || name === 'id' || name==="rate" || name==="selAmount" || name==="purchesAmount") {
+          if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+            setFormData((prevState) => ({ ...prevState, [name]: value }));
+          }
+        } else {
+          setFormData((prevState) => ({ ...prevState, [name]: value }));
+        }   
+    }
+    function handleSubmit(e){
+        e.preventDefault();
+        if(isActive && formData.id){
+            updateExchangeMoney(formData)
+        }else{
+            addExchangeMoney(formData)
+        }
+        setLastSavedData(formData);
+        setFormData(data)
+    }
+    function cancel(e){
+     e.preventDefault();
+     setIsActive(false)
+     setFormData(lastSavedData);
+    }
+    function handleEdit(e){
+        e.preventDefault();
+        setIsActive(true);
+        const ExchangeMoneyToEdit=exchangeMoney.find((curs)=> curs.id===formData.id);
+        if(ExchangeMoneyToEdit){
+            setFormData(ExchangeMoneyToEdit);
+        }
+    }
+    
+    function active(e){
+        e.preventDefault();
+        setIsActive(true);
+        setFormData(data)
+    }
+
     return (
         <>
            <div className={styles.container}>
-              <form className={styles.formContainer}>
+              <form  action='POST' onSubmit={handleSubmit}>
+                <div className={styles.formContainer}>
               <div className={styles.labelPart1}>
                   <label>Number:</label>
                   <label>Sel Currency</label>
@@ -17,20 +76,20 @@ function ExchangeMoney() {
                   <label>Purchase Amount:</label>
               </div>
               <div className={styles.inputPart1}>
-                  <input type="text" name="number"/>
-                  <select>
+                  <input type="text" name="id" value={formData.id} disabled={!isActive} onChange={handleChange}/>
+                  <select name='selCurrency' value={formData.selCurrency} disabled={!isActive} onChange={handleChange}>
                       <option>AFG</option>
                       <option>USA</option>
                       <option>KA</option>
                   </select> 
-                  <select>
+                  <select name='purchesCurrency' value={formData.purchesCurrency} disabled={!isActive} onChange={handleChange}>
                       <option>AFG</option>
                       <option>USA</option>
                       <option>KA</option>
                   </select> 
-                  <input type="text" name="Rate"/>  
-                  <input type='text' name='SAmount'/>
-                  <input type="text" name='PAmount'/>
+                  <input type="text" name="rate" value={formData.rate} disabled={!isActive} onChange={handleChange} />  
+                  <input type='text' name='selAmount' value={formData.selAmount} disabled={!isActive} onChange={handleChange}/>
+                  <input type="text" name='purchesAmount' value={formData.purchesAmount} disabled={!isActive} onChange={handleChange}/>
                   <div className={styles.charge} >
                   </div>
               </div>
@@ -47,9 +106,9 @@ function ExchangeMoney() {
                   <label>Description</label>
               </div>
               <div className={styles.inputPart2}>
-              <input type="text" value={date}/>
+              <input type="date" name='date' value={formData.date} disabled={!isActive} onChange={handleChange}/>
               <div>
-              <select>
+              <select name='exchanger' value={formData.exchanger} disabled={!isActive} onChange={handleChange}>
                   <option>Ehsan</option>
                   <option>Ali</option>
                   <option>Mohmod</option>
@@ -57,14 +116,14 @@ function ExchangeMoney() {
               <button>➕</button>
               </div>
               <div>
-              <select>
+              <select name='customer' value={formData.customer} disabled={!isActive} onChange={handleChange}>
               <option>Ehsan</option>
               <option>Ali</option>
               <option>Mohmod</option>
               </select>
               <button>➕</button>
               </div>
-              <textarea/>  
+              <textarea value={formData.description} name='description' disabled={!isActive} onChange={handleChange}/>  
               </div>
               <div className={styles.rightSection}>
                   <img src="/about.jpg" alt="not found" />
@@ -73,10 +132,35 @@ function ExchangeMoney() {
                   <button>select</button>
                   </div>
               </div> 
+                </div>
+                {isActive ? (
+          <>
+            <Button tip="primary" htmlType="submit" >
+              Save
+            </Button>
+            <Button tip="primary" type="reset" onClick={cancel}>
+              Cancel
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button tip="primary" onClick={active}>
+              New
+            </Button>
+            <Button tip="primary" onClick={handleEdit}>
+              Edit
+            </Button>
+            <Button tip="primary">Delete</Button>
+            <Button tip="primary">
+              Search
+            </Button>
+          </>
+        )} 
               </form>
            </div>
            <div className='table'>
     <table border="1">
+        <thead>
           <tr>
             <th>No.</th>
             <th>ّRate</th>
@@ -85,12 +169,27 @@ function ExchangeMoney() {
             <th>Purchase Amount</th>
             <th>Purchase Currency</th>
             <th>Exchanger</th>
+            <th>customer</th>
             <th>Date</th>
             <th>Description</th>
           </tr>
-          <tr>
-            <td></td>
+        </thead>
+        <tbody>
+            {exchangeMoney.map((exchangeMoney,index)=>(
+            <tr key={exchangeMoney.id}>
+            <td>{exchangeMoney.id}</td>
+            <td>{exchangeMoney.rate}</td>
+            <td>{exchangeMoney.selAmount}</td>
+            <td>{exchangeMoney.selCurrency}</td>
+            <td>{exchangeMoney.purchesAmount}</td>
+            <td>{exchangeMoney.purchesCurrency}</td>
+            <td>{exchangeMoney.exchanger}</td>
+            <td>{exchangeMoney.customer}</td>
+            <td>{exchangeMoney.date}</td>
+            <td>{exchangeMoney.description}</td>
           </tr>
+         ))}
+        </tbody>
         </table>
     </div>
         </>

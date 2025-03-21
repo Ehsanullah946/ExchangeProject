@@ -2,31 +2,35 @@ import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './Manage.module.css'
+const data={
+  id:"",
+  firstName:"",
+  lastName:"",  
+  fatherName:"",
+  maritalStatus:"",
+  job:"",
+  phoneNumber:"",
+  nationalCode:"",
+  permenentAddress:"",
+  currentAddress:"",
+  GrapsSalary:"",
+  tax:"",
+  netSalary:"",
+  moneyType:''
+}
 function Employee() {
   const{addEmployee,employee,isActive,setIsActive,updateEmployee,setIsOpen} = useContexts();
-  const [formData, setFormData] = useState({
-    id:"",
-    firstName:"",
-    lastName:"",  
-    fatherName:"",
-    maritalStatus:"",
-    job:"",
-    phoneNumber:"",
-    nationalCode:"",
-    permenentAddress:"",
-    currentAddress:"",
-    GrapsSalary:"",
-    tax:"",
-    netSalary:"",
-    moneyType:''
-  });
+  const [formData, setFormData] = useState(data);
   const [lastSavedData, setLastSavedData] = useState({...formData });
   function handleChange(e) {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
+    if (name === 'tax' || name === 'id' || name === 'nationalCode' || name === 'GrapsSalary' || name === 'netSalary') {
+      if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+        setFormData((prevState) => ({ ...prevState, [name]: value }));
+      }
+    } else {
+      setFormData((prevState) => ({ ...prevState, [name]: value }));
+    }
   }
   async function handleSubmit(e) {
     e.preventDefault();
@@ -36,22 +40,7 @@ function Employee() {
       addEmployee(formData);
     }  
     setLastSavedData(formData);
-    setFormData({
-    id:"",
-    firstName:"",
-    lastName:"",  
-    fatherName:"",
-    maritalStatus:"",
-    job:"",
-    phoneNumber:"",
-    nationalCode:"",
-    permenentAddress:"",
-    currentAddress:"",
-    GrapsSalary:"",
-    tax:"",
-    netSalary:"",
-    moneyType:''
-    });
+    setFormData(data);
   }
 
   function openSearch(e) {
@@ -68,22 +57,7 @@ function Employee() {
   }
   function active(e) {
     setIsActive(true);
-    setFormData({
-      id:"",
-      firstName:"",
-      lastName:"",
-      fatherName:"",
-      maritalStatus:"",
-      job:"",
-      phoneNumber:"",
-      nationalCode:"",
-      permenentAddress:"",
-      currentAddress:"",
-      GrapsSalary:"",
-      tax:"",
-      netSalary:"",
-      moneyType:''
-    });
+    setFormData(data);
     e.preventDefault();
   }
 

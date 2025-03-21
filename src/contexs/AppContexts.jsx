@@ -1,7 +1,5 @@
 import { useContext, useState } from "react";
 import { createContext } from "react";
-import AcountToAcount from "../component/Main/AcountToAcount";
-
  const AppContexts =createContext();
  function AppProvider({children}){  
      const [customer,setCustomer]=useState([]);
@@ -17,13 +15,16 @@ import AcountToAcount from "../component/Main/AcountToAcount";
      const [accountToAccount,setAccountToAccount]=useState([]);
      const [sendMoney,setSendMoney]=useState([]);
      const [receiveMoney,setReceiveMoney]=useState([]);
-
+     const [exchangeMoney,setExchangeMoney]=useState([]);
+     const [expence,setExpence]=useState([]);
+     const [dayBook,setDayBook]=useState([]);
+     const [rate,setRate]=useState([]);
+     
 
      const [isOpen, setIsOpen] = useState(false);  
      const [isActive, setIsActive] = useState(false);
 
-     
-
+    
  // try {
  //     const response=await fetch('.api/customer',
  //          {method:"POST",
@@ -84,6 +85,22 @@ import AcountToAcount from "../component/Main/AcountToAcount";
       setReceiveMoney(prevReceiveMoney=>[...prevReceiveMoney,receiveMoney])
      }
 
+     const addExchangeMoney=(exchangeMoney)=>{
+        setExchangeMoney(prevExchangeMoney=> [...prevExchangeMoney,exchangeMoney]);
+     }
+
+    const addExpence=(expence)=>{
+      setExpence(prevExpence=>[...prevExpence,expence])
+    }
+
+
+    const addDayBook=(dayBook)=>{
+      setDayBook(prevDaybook=> [...prevDaybook,dayBook])
+    }
+
+    const addRate=(rate)=>{
+      setRate(prevRate=>[...prevRate,rate]);
+    }
     // const updateItem = (updatedItem, type) => {
     //   const setItems = type === 'customer' ? setCustomer : setBranch;
     //   const prevItems = type === 'customer' ? customer : branch;
@@ -112,12 +129,14 @@ import AcountToAcount from "../component/Main/AcountToAcount";
         withDrow:{items:withDrow,setItems:setWithDrow},
         accountToAccount:{items:accountToAccount,setItems:setAccountToAccount},
         sendMoney:{items:sendMoney,setItems:setSendMoney},
-        receiveMoney:{items:receiveMoney,setItems:setReceiveMoney}
+        receiveMoney:{items:receiveMoney,setItems:setReceiveMoney},
+        exchangeMoney:{items:exchangeMoney,setItems:setExchangeMoney},
+        expence:{items:expence,setItems:setExpence},
+        dayBook:{item:dayBook,setItems:setDayBook},
+        rate:{item:rate,setItems:setRate}
       };
       
-    
-      const { items, setItems } = stateMap[type];
-    
+      const { items,setItems} = stateMap[type];
       setItems(prevItems => {
         const itemExists = prevItems.some(item => item.id === updatedItem.id);
         if (itemExists) {
@@ -143,6 +162,10 @@ import AcountToAcount from "../component/Main/AcountToAcount";
      const updateAccountToAccount=(updateAccountToAccount)=> updateItem(updateAccountToAccount,"accountToAccount");
      const updateSendMoney=(updateSendMoney)=>updateItem(updateSendMoney,"sendMoney");
      const updateReceiveMoney=(updateReceiveMoney)=>updateItem(updateReceiveMoney,"receiveMoney")
+     const updateExchangeMoney=(updateExchangeMoney)=>updateItem(updateExchangeMoney,"exchangeMoney")
+     const updateExpence=(updateExpence)=> updateItem(updateExpence,"expence");
+     const updateDayBook=(updateDayBook)=> updateItem(updateDayBook,"dayBook");
+     const updateRate=(updateRate)=> updateItem(updateRate,"rate");
     
                            
      return (
@@ -156,14 +179,14 @@ import AcountToAcount from "../component/Main/AcountToAcount";
         addCreateUser,updateCreateUser,createUser,DepositMoney,updateDeposit,deposit,
         withDrow,updateWithDrow,withDrowMoney,updateAccountToAccount,
         accountToAccount,accountToAccountMoney,sendMoney,addSendMoney,updateSendMoney,
-        receiveMoney,updateReceiveMoney,addReceiveMoney
-
+        receiveMoney,updateReceiveMoney,addReceiveMoney,updateExchangeMoney,exchangeMoney,addExchangeMoney,
+        updateExpence,expence,addExpence,
+        updateDayBook,dayBook,addDayBook,updateRate,addRate,rate
         }}>
-            {children} 
+          {children} 
         </AppContexts.Provider> 
      )   
 }
-
 function useContexts(){
     const context=useContext(AppContexts);
     if(context===undefined){
@@ -171,6 +194,5 @@ function useContexts(){
     }
     return context;
  }
- 
 export { AppProvider,useContexts} 
 

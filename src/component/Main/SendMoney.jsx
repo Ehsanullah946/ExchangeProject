@@ -2,29 +2,36 @@ import { useContexts } from '../../contexs/AppContexts'
 import Button from '../Button';
 import styles from './SAR.module.css'
 import { useState } from 'react';
+const data={
+  branch:"",
+  id:"",  
+  transfer:"",
+  receiver:"",
+  amount:"",
+  currency:"",
+  charge:"",
+  chargeType:"",
+  placeCharge:"",
+  date: new Date().toISOString().split('T')[0], 
+  customer:"",
+  exchageMoney:"",
+  guarantor:"",
+  description:""
+}
 function SendMoney() {
     const{sendMoney,updateSendMoney,addSendMoney,isActive,setIsActive}=useContexts();
-    const [formData,setFormData]=useState({
-        branch:"",
-        id:"",  
-        transfer:"",
-        receiver:"",
-        amount:"",
-        currency:"",
-        charge:"",
-        chargeType:"",
-        placeCharge:"",
-        date:`${new Date()}`,
-        customer:"",
-        exchageMoney:"",
-        guarantor:"",
-        description:""
-    });
+    const [formData,setFormData]=useState(data);
     const [lastSavedData,setLastSavedData]=useState({...formData});
     const handleChange=(e)=>{
          e.preventDefault();
          const {name,value}=e.target;
-         setFormData((prevState)=>({...prevState,[name]:value}))
+         if (name === 'amount' || name === 'id' || name==="charge" || name==="placeCharge" || name==="passNumber") {
+          if (value === '' || !isNaN(value)) {
+            setFormData((prevState) => ({ ...prevState, [name]: value }));
+          }
+        } else {
+          setFormData((prevState) => ({ ...prevState, [name]: value }));
+        } 
     }
     function handleSubmit(e){
         e.preventDefault();
@@ -35,22 +42,7 @@ function SendMoney() {
             addSendMoney(formData)
         }
         setLastSavedData(formData)
-        setFormData({
-        branch:"",
-        id:"",  
-        transfer:"",
-        receiver:"",
-        amount:"",
-        currency:"",
-        charge:"",
-        chargeType:"",
-        placeCharge:"",
-        date:`${new Date()}`,
-        customer:"",
-        exchageMoney:"",
-        guarantor:"",
-        description:""
-        })
+        setFormData(data)
     }
     function handleEdit(e){
         e.preventDefault();
@@ -63,22 +55,7 @@ function SendMoney() {
     function active(e){
         e.preventDefault();
         setIsActive(true)
-        setFormData({
-            branch:"",
-            id:"",  
-            transfer:"",
-            receiver:"",
-            amount:"",
-            currency:"",
-            charge:"",
-            chargeType:"",
-            placeCharge:"",
-            date:`${new Date()}`,
-            customer:"",
-            exchageMoney:"",
-            guarantor:"",
-            description:""
-        })    
+        setFormData(data)    
     }
     function cancel(e){
         e.preventDefault();
@@ -147,7 +124,7 @@ function SendMoney() {
             <label>Description</label>
             </div>
             <div className={styles.inputPart2}>
-            <input type="text" name='date' value={formData.date} onChange={handleChange} disabled={!isActive}/>
+            <input type="date" name='date' value={formData.date} onChange={handleChange} disabled={!isActive}/>
             <div>
             <select name='customer' value={formData.customer} onChange={handleChange} disabled={!isActive}>
                 <option>Ehsan</option>

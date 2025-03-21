@@ -1,32 +1,40 @@
 import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
+import Select from 'react-select';
 import styles from './SAR.module.css'
+const data={
+  branch:"",
+  id:"",  
+  transfer:"",
+  receiver:"",
+  amount:"",
+  currency:"",
+  charge:"",
+  chargeType:"",
+  passCharge:"",
+  date: new Date().toISOString().split('T')[0], 
+  customer:"",
+  passTo:"",
+  passNumber:"",
+  guarantor:"",
+  description:""
+}
 function ReciveMoney() {
-    const{receiveMoney,updateReceiveMoney,addReceiveMoney,isActive,setIsActive}=useContexts();
-    const [formData,setFormData]=useState({
-        branch:"",
-        id:"",  
-        transfer:"",
-        receiver:"",
-        amount:"",
-        currency:"",
-        charge:"",
-        chargeType:"",
-        passCharge:"",
-        date:`${new Date()}`,
-        customer:"",
-        passTo:"",
-        passNumber:"",
-        guarantor:"",
-        description:""
-    });
+    const{receiveMoney,updateReceiveMoney,addReceiveMoney,isActive,setIsActive,branch}=useContexts();
+    const [formData,setFormData]=useState(data);
 
     const [lastSavedData,setLastSavedData]=useState({...formData});
     const handleChange=(e)=>{
          e.preventDefault();
          const {name,value}=e.target;
-         setFormData((prevState)=>({...prevState,[name]:value}))
+         if (name === 'amount' || name === 'id' || name==="charge" || name==="passCharge" || name==="passNumber") {
+          if (value === '' || !isNaN(value)) {
+            setFormData((prevState) => ({ ...prevState, [name]: value }));
+          }
+        } else {
+          setFormData((prevState) => ({ ...prevState, [name]: value }));
+        } 
     }
     function handleSubmit(e){
         e.preventDefault();
@@ -37,23 +45,7 @@ function ReciveMoney() {
             addReceiveMoney(formData)
         }
         setLastSavedData(formData)
-        setFormData({
-        branch:"",
-        id:"",  
-        transfer:"",
-        receiver:"",
-        amount:"",
-        currency:"",
-        charge:"",
-        chargeType:"",
-        passCharge:"",
-        date:`${new Date()}`,
-        customer:"",
-        passTo:"",
-        passNumber:"",
-        guarantor:"",
-        description:""
-        })
+        setFormData(data)
     }
     function handleEdit(e){
         e.preventDefault();
@@ -66,25 +58,15 @@ function ReciveMoney() {
     function active(e){
         e.preventDefault();
         setIsActive(true)
-        setFormData({
-            branch:"",
-            id:"",  
-            transfer:"",
-            receiver:"",
-            amount:"",
-            currency:"",
-            charge:"",
-            chargeType:"",
-            passCharge:"",
-            date:`${new Date()}`,
-            customer:"",
-            passTo:"",
-            passNumber:"",
-            guarantor:"",
-            description:""
-        })
+        setFormData(data)
         
     }
+    const handleSelectChange = (selectedOption) => {
+      setFormData((prevState) => ({
+        ...prevState,
+        branch: selectedOption ? selectedOption.value : '',
+      }));
+    };
     function cancel(e){
         e.preventDefault();
         setIsActive(false)
@@ -106,12 +88,23 @@ function ReciveMoney() {
             <label>pass charge:</label>
         </div>
       <div className={styles.inputPart1}>
-        <select name='branch' required value={formData.branch} onChange={handleChange} disabled={!isActive}>
+        {/* <select name='branch' required value={formData.branch} onChange={handleChange} disabled={!isActive}>
             <option value="">select</option>
-            <option value={'Ehsan'}>Ehsan</option>
-            <option value={'Ali'}>Ali</option>
-            <option value={'Mahmod'}>Mohmod</option>
-        </select>                                        
+            {branch.map((item,index)=>
+            <option key={index} value={item.firstName}>{item.firstName}</option>  
+            )}       
+        </select>                                  */}
+              <Select className={styles.selectOption}
+                name="branch"
+                value={{ label: formData.branch, value: formData.branch }}
+                onChange={handleSelectChange}
+                options={branch.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable // Enable searching in the dropdown
+                isDisabled={!isActive} 
+              />
         <input type="text" required name="id" value={formData.id} onChange={handleChange} disabled={!isActive}/>
         <input type="text" required name="transfer" value={formData.transfer} onChange={handleChange} disabled={!isActive}/>
         <input type='text' required name='receiver' value={formData.receiver}  onChange={handleChange} disabled={!isActive}/>
@@ -132,7 +125,7 @@ function ReciveMoney() {
         </select>
         </div>
         <div className={styles.charge} >
-        <input type="text" name='placeCharge' value={formData.placeCharge} onChange={handleChange} disabled={!isActive}/>
+        <input type="text" name='passCharge' value={formData.passCharge} onChange={handleChange} disabled={!isActive}/>
         <select  onChange={handleChange} disabled={!isActive}>
             <option value="">Cur</option>
             <option  value={"AFG"}>AFG</option>
