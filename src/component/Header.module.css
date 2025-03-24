@@ -1,4 +1,4 @@
-.nav{
+ .nav{
     display: flex;
     justify-content: start;
     align-items: center;
@@ -7,9 +7,7 @@
     height: 60px;
     position:sticky;
     background-color: rgb(34, 255, 0);
- 
    }
-   
    .nav ul {
     list-style: none;
     display: flex;
@@ -19,15 +17,33 @@
 .nav a:link,
 .nav a:visited {
   text-decoration: none;
-  /* color: var(--color-light--2); */
+ /* color: var(--color-light--2);  */
   color: white;
   text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: 600;
 }
-NavLink.active{
-  color: red;
+.nav li.active a {
+  color: red; 
 }
+.nav li a {
+  color: #fff; 
+  transition: color 0.3s ease;
+} 
+.nav a {
+  color: white; /* Color of active text */
+  transition: color 0.3s ease;
+}
+.nav li.active a {
+  color: red; /* New default color for inactive links */
+  transform: scale(1.05); /* Scale the link up to make it more prominent */
+  background-color: red;
+}
+
+ 
+
+
+
 
 
 

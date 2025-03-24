@@ -1,0 +1,39 @@
+.container{
+    width: fit-content;
+    margin:auto;
+    padding: 20px 60px 10px 60px;
+    border: 3px double rgb(34, 255, 0);
+    
+}
+.formContainer{
+  display: flex;
+  justify-content: space-evenly;  
+}
+.labelPart2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+.inputPart2{
+    display:flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 30px;
+} 
+.inputPart2 input,
+.inputPart2 select{
+   width: 220px;
+   margin-bottom: 5px;
+   margin-right: 5px;
+}
+.labelPart2 label{
+    font-size: 12px; 
+}
+.labelPart2 input[type="checkbox"],
+.labelPart1 input[type="checkbox"]{
+    width: 20px;
+    margin-bottom: 10px;
+}
+.labelPart2 label{
+    margin-bottom: 10px;
+}

@@ -2,6 +2,11 @@ import { useContext, useState } from "react";
 import { createContext } from "react";
  const AppContexts =createContext();
  function AppProvider({children}){  
+
+
+  const [formData,setFormData]=useState({});
+
+
      const [customer,setCustomer]=useState([]);
      const [branch,setBranch]=useState([]);
      const [employee,setEmployee]=useState([]);
@@ -19,6 +24,8 @@ import { createContext } from "react";
      const [expence,setExpence]=useState([]);
      const [dayBook,setDayBook]=useState([]);
      const [rate,setRate]=useState([]);
+     const [moneyType,setMoneyType]=useState([]);
+     
      
 
      const [isOpen, setIsOpen] = useState(false);  
@@ -101,6 +108,10 @@ import { createContext } from "react";
     const addRate=(rate)=>{
       setRate(prevRate=>[...prevRate,rate]);
     }
+
+    const addMoneyType=(moneyType)=>{
+      setMoneyType(prevMoneyType=> [...prevMoneyType,moneyType]);
+    }
     // const updateItem = (updatedItem, type) => {
     //   const setItems = type === 'customer' ? setCustomer : setBranch;
     //   const prevItems = type === 'customer' ? customer : branch;
@@ -133,7 +144,8 @@ import { createContext } from "react";
         exchangeMoney:{items:exchangeMoney,setItems:setExchangeMoney},
         expence:{items:expence,setItems:setExpence},
         dayBook:{item:dayBook,setItems:setDayBook},
-        rate:{item:rate,setItems:setRate}
+        rate:{item:rate,setItems:setRate},
+        moneyType:{item:moneyType,setItems:setMoneyType}
       };
       
       const { items,setItems} = stateMap[type];
@@ -166,6 +178,7 @@ import { createContext } from "react";
      const updateExpence=(updateExpence)=> updateItem(updateExpence,"expence");
      const updateDayBook=(updateDayBook)=> updateItem(updateDayBook,"dayBook");
      const updateRate=(updateRate)=> updateItem(updateRate,"rate");
+     const updateMoneyType=(updateMoneyType)=> updateItem(updateMoneyType,"moneyType");
     
                            
      return (
@@ -181,7 +194,8 @@ import { createContext } from "react";
         accountToAccount,accountToAccountMoney,sendMoney,addSendMoney,updateSendMoney,
         receiveMoney,updateReceiveMoney,addReceiveMoney,updateExchangeMoney,exchangeMoney,addExchangeMoney,
         updateExpence,expence,addExpence,
-        updateDayBook,dayBook,addDayBook,updateRate,addRate,rate
+        updateDayBook,dayBook,addDayBook,updateRate,addRate,rate,
+        moneyType,updateMoneyType,addMoneyType,formData,setFormData
         }}>
           {children} 
         </AppContexts.Provider> 
