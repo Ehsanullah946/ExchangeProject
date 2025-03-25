@@ -1,12 +1,11 @@
 .searchContainer{
         width: fit-content;
         margin:auto;
-        padding: 20px 20px 6px 60px;
+        padding: 0px 20px 6px 60px;
         border: 1px solid rgb(34, 255, 0);    
 }
 .formContain{
     display: flex;
-
 }
 .labelPart{
     display: flex;
@@ -20,4 +19,9 @@
     flex-direction: column;
     justify-content: space-between;
     margin-left: 25px;
+}
+span{
+    cursor: pointer;
+    margin-left: 325px;
+   font-size: 25px;
 }

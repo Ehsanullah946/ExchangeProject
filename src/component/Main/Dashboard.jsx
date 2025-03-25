@@ -1,5 +1,6 @@
 import styles from './Dashboard.module.css'
 import Button from "../Button"
+import GraphBar from './GraphBar'
 function Dashboard() {
     return (
       <>
@@ -51,6 +52,10 @@ function Dashboard() {
             <td>21000</td>
           </tr>
         </table>
+        <div>
+        <GraphBar/>
+        </div>
+
       </>
     )
 }

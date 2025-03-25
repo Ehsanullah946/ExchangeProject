@@ -1,8 +1,14 @@
 import styles from './SearchingPopup.module.css'
 import Button from '../Button';
+import { useContexts } from '../../contexs/AppContexts';
 function SearchingPopup() {
+  const {setIsOpen,isOpen } = useContexts();  
+  function Toggle(){
+    setIsOpen(!isOpen);
+  }
     return (
         <div className={styles.searchContainer}>
+            <span onClick={Toggle}>❎</span>
             <form action="" >
             <div className={styles.formContain}>
               <div className={styles.labelPart}>
