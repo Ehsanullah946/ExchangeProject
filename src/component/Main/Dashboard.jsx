@@ -52,7 +52,7 @@ function Dashboard() {
             <td>21000</td>
           </tr>
         </table>
-        <div>
+        <div className={styles.bar}>
         <GraphBar/>
         </div>
 

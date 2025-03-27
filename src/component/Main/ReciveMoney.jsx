@@ -105,10 +105,10 @@ function ReciveMoney() {
                 isSearchable // Enable searching in the dropdown
                 isDisabled={!isActive} 
               />
-        <input type="text" required name="id" value={formData.id} onChange={handleChange} disabled={!isActive}/>
-        <input type="text" required name="transfer" value={formData.transfer} onChange={handleChange} disabled={!isActive}/>
-        <input type='text' required name='receiver' value={formData.receiver}  onChange={handleChange} disabled={!isActive}/>
-        <input type="text" required name='amount' value={formData.amount} onChange={handleChange} disabled={!isActive}/>
+        <input type="text" placeholder='No' required name="id" value={formData.id} onChange={handleChange} disabled={!isActive}/>
+        <input type="text" placeholder='Sender' required name="transfer" value={formData.transfer} onChange={handleChange} disabled={!isActive}/>
+        <input type='text' placeholder='Receiver' required name='receiver' value={formData.receiver}  onChange={handleChange} disabled={!isActive}/>
+        <input type="text" placeholder='Amount' required name='amount' value={formData.amount} onChange={handleChange} disabled={!isActive}/>
         <select name='currency' required value={formData.currency} onChange={handleChange} disabled={!isActive}>
             <option value="">Cur</option>
             <option value={"AFG"}>AFG</option>

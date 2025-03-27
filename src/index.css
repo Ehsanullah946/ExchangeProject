@@ -57,6 +57,10 @@ textarea{
   background-color:rgb(254, 254, 254);
   transition: all 0.2s;
 }
+select{
+  width: 220px;
+  height:20px;
+}
 input[type="checkbox"]{
   width: 20px;
 }
@@ -119,3 +123,21 @@ table td{
     "description": "Import CSS Module as `styles`"
   },
 */
+.css-1wy0on6{
+  height: 12px; 
+  margin-top: 12px;
+}
+.css-1wy0on6 span{
+  margin-left: 10px;  
+}
+.css-1xc3v61-indicatorContainer{
+  padding: 0px;
+  margin: 0px;
+}
+.css-19bb58m{
+  height: 12px;
+}
+.css-13cymwt-control{
+  min-height: 0;
+  height: 15px;
+}

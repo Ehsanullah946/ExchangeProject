@@ -77,12 +77,19 @@ select[name="currency"]{
 img{
     height: 150px;
 }
-select{
-    /* margin-top: 10px; */
+.selectOption{
+   width: 220px;
+   padding: 0px;
+   margin: 0px;
+   box-sizing: border-box;
 }
-/* .selectOption{
-    height:10px;
-} */
-
-  
+  .css-1wy0on6{
+    width: 200px;
+    height: 20px;
+}
+.css-1u9des2-indicatorSeparator{
+    width: 200px;
+    height: 20px;
+    
+  }
 

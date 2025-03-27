@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import Button from '../Button';
 import styles from './Manage.module.css'
 import {useContexts} from "../../contexs/AppContexts"
-import SearchingPopup from './SearchingPopup';
+import Modal from './Modal';
 const data={
   id: "",
   firstName: "",
@@ -44,12 +44,10 @@ function Customer() {
     setLastSavedData(formData);
     setFormData(data);
   }
-
   function openSearch(e) {
     e.preventDefault();
     setIsOpen(true);
   }
-  
   function handleEdit(e) {
     setIsActive(true);
     e.preventDefault();
@@ -58,23 +56,20 @@ function Customer() {
       setFormData(customerToEdit);
     }
   }
-
   function active(e) {
     setIsActive(true);
     setFormData(data);
     e.preventDefault();
   }
-
   function cancel(e) {
     e.preventDefault();
     setIsActive(false);
     setFormData(lastSavedData); 
   }
-  
   return (
     <>
       {isOpen ?
-    <SearchingPopup />
+    <Modal />
       :
       <>
     <div className={styles.container}>

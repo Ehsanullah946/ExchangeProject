@@ -10,17 +10,16 @@ function GraphBar() {
     const data={
         labels:["sat","sun","mon","tus","wend","turs"],
         datasets:[{
-            label:"Deposit",
+            label:"Income",
             data:[2000,3000,4000,5000,2000,6000],
-            backgroundColor:'aqua',
+            backgroundColor:'blue',
             borderColor:'white', 
         },
         {
-            label:"Withdrow",
+            label:"Expence",
             data:[1000,2000,3000,4000,5000,4000],
-            backgroundColor:'green',
-            borderColor:'white',
-             
+            backgroundColor:'red',
+            borderColor:'white',       
         }
     ]      
     }
@@ -39,5 +38,4 @@ function GraphBar() {
         </div>
     )
 }
-
 export default GraphBar

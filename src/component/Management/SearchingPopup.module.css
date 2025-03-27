@@ -25,3 +25,6 @@ span{
     margin-left: 325px;
    font-size: 25px;
 }
+span:hover{
+    box-shadow: 10rem 10rem 10rem rgba(30, 255, 0, 0.16);
+}
