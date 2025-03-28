@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '../Button';
 import styles from './Manage.module.css'
 import { useContexts } from '../../contexs/AppContexts';
+import GurantorSearch from './SearchingPopup/GurantorSearch';
 const data={
   id: "",
   firstName: "",
@@ -15,7 +16,7 @@ const data={
   currentAddress:"",
 }
 function Guarantor() {
-  const { addGuarantor,guarantor,setIsActive,setIsOpen,isActive,updateGuarantor } = useContexts();  
+  const { addGuarantor,guarantor,setIsActive,setIsOpen,isActive,updateGuarantor,isOpen } = useContexts();  
   const [formData,setFormData]=useState(data);
   const [lastSavedData,setlastSavedData]=useState({...formData})
   function handleChange(e){
@@ -65,6 +66,7 @@ function Guarantor() {
   }
     return (
       <>
+         {isOpen ? <GurantorSearch/> : 
         <div className={styles.container}>
         <form action="POST" onSubmit={handleSubmit} >
           <div className={styles.formContainer}>
@@ -129,6 +131,7 @@ function Guarantor() {
         )}
         </form>
       </div>
+     } 
       <div className='table'>
       <table border="1">
       <thead>

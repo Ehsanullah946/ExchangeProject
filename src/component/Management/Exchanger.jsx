@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '../Button';
 import styles from './Manage.module.css'
 import { useContexts } from '../../contexs/AppContexts';
+import ExchangerSearch from './SearchingPopup/ExchangerSearch';
 const data={
   id: "",
   firstName: "",
@@ -11,7 +12,7 @@ const data={
   nationalCode:""
 }
 function Exchanger() {
-  const { addChanger,changer,setIsActive,setIsOpen,isActive,updateChanger } = useContexts();  
+  const { addChanger,changer,setIsActive,setIsOpen,isActive,updateChanger,isOpen } = useContexts();  
   const [formData,setFormData]=useState(data);
   const [lastSavedData,setlastSavedData]=useState({...formData})
   function handleChange(e){
@@ -61,6 +62,8 @@ function Exchanger() {
   }
   return (
       <>
+
+       {isOpen ? <ExchangerSearch/> : 
         <div className={styles.container}>
         <form action="POST" onSubmit={handleSubmit}>
           <div className={styles.formContainer}>
@@ -110,6 +113,7 @@ function Exchanger() {
         )}
         </form>
       </div>
+      }
       <div className='table'>
       <table border="1">
       <thead>

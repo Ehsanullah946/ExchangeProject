@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './Manage.module.css'
+import S_RSearch from './SearchingPopup/S_RSearch';
 const data={
   id: "",
   firstName: "",
@@ -65,6 +66,7 @@ function SenderReceiver() {
   }
     return (
       <>
+        {isOpen ? <S_RSearch/> : 
         <div className={styles.container}>
         <form action="POST" onSubmit={handleSubmit} >
           <div className={styles.formContainer}>
@@ -129,6 +131,7 @@ function SenderReceiver() {
         )}
         </form>
       </div>
+     }
       <div className='table'>
       <table border="1">
       <thead>

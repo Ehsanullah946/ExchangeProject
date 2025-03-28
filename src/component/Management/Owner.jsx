@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '../Button';
 import styles from './Manage.module.css'
 import { useContexts } from '../../contexs/AppContexts';
-import SearchingPopup from './SearchingPopup';
+import OwnerSearch from './SearchingPopup/OwnerSearch';
 const data={
   id: "",
   firstName: "",
@@ -74,7 +74,7 @@ function Owner() {
   return (
     <>
   {isOpen ? (
-    <SearchingPopup />
+    <OwnerSearch />
   ) : (
     <div className={styles.container}>
       <form action="POST" onSubmit={handleSubmit}>

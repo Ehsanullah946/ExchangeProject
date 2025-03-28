@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from './Modal.module.css'
-import { useContexts } from "../../contexs/AppContexts";
-import Button from "../Button";
+import { useContexts } from "../../../contexs/AppContexts";
+import Button from "../../Button";
 
 export default function Modal() {
     const {isOpen,setIsOpen}=useContexts();

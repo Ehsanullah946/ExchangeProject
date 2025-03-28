@@ -3,7 +3,7 @@ import Button from '../Button';
 import styles from './Manage.module.css'
 import {useContexts} from "../../contexs/AppContexts"
 import { useState } from 'react';  
-import Modal from './Modal';
+import BranchSearch from './SearchingPopup/BranchSearch';
 const data={
   id:"",
   firstName:"",
@@ -70,7 +70,7 @@ const [formData,setFormData]=useState(data);
     }
     return (
    <>
-   {isOpen ? <Modal/> : 
+   {isOpen ? <BranchSearch/> : 
    <div className={styles.container}>
    <form action="POST" onSubmit={handleSubmit}>
     <div className={styles.formContainer}>

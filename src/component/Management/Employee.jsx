@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './Manage.module.css'
+import EmployeeSearch from './SearchingPopup/EmployeeSearch';
 const data={
   id:"",
   firstName:"",
@@ -19,7 +20,7 @@ const data={
   moneyType:''
 }
 function Employee() {
-  const{addEmployee,employee,isActive,setIsActive,updateEmployee,setIsOpen} = useContexts();
+  const{addEmployee,employee,isActive,setIsActive,updateEmployee,setIsOpen,isOpen} = useContexts();
   const [formData, setFormData] = useState(data);
   const [lastSavedData, setLastSavedData] = useState({...formData });
   function handleChange(e) {
@@ -69,6 +70,7 @@ function Employee() {
 
     return (
       <>
+         {isOpen ? <EmployeeSearch/> : 
         <div className={styles.container}>
         <form action="POST" onSubmit={handleSubmit}>
         <div className={styles.formContainer}>
@@ -230,6 +232,7 @@ function Employee() {
         )}
         </form>
       </div>
+    }
       <div className="table">
     <table border="1">
       <thead>
