@@ -2,6 +2,7 @@ import { useContexts } from '../../contexs/AppContexts'
 import Button from '../Button';
 import styles from './SAR.module.css'
 import { useState } from 'react';
+import SendMoneySearch from './SearchingPopup/SendMoneySearch';
 const data={
   branch:"",
   id:"",  
@@ -19,7 +20,7 @@ const data={
   description:""
 }
 function SendMoney() {
-    const{sendMoney,updateSendMoney,addSendMoney,isActive,setIsActive}=useContexts();
+    const{sendMoney,updateSendMoney,addSendMoney,isActive,setIsActive,isOpen,setIsOpen}=useContexts();
     const [formData,setFormData]=useState(data);
     const [lastSavedData,setLastSavedData]=useState({...formData});
     const handleChange=(e)=>{
@@ -62,8 +63,13 @@ function SendMoney() {
         setIsActive(false)
         setFormData(lastSavedData);
     }
+    function OpenSearch(e){
+      e.preventDefault();
+      setIsOpen(true);
+    }
     return (
         <>
+        {isOpen ? <SendMoneySearch/>:
       <div className={styles.container}>
         <form action='POST' onSubmit={handleSubmit}>
             <div className={styles.formContainer}>
@@ -170,13 +176,14 @@ function SendMoney() {
               Edit
             </Button>
             <Button tip="primary">Delete</Button>
-            <Button tip="primary">
+            <Button tip="primary" onClick={OpenSearch}>
               Search
             </Button>
           </>
         )}  
         </form>
     </div>
+      }
     <div className='table'>
     <table border="1">
     <thead>

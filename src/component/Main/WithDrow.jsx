@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '../Button';
 import styles from './AddMoney.module.css'
 import { useContexts } from '../../contexs/AppContexts';
+import WithdrowSearch from './SearchingPopup/WithdrowSearch';
 const data={
   id:"",
   account:"",
@@ -11,7 +12,7 @@ const data={
   description:"",
 }
 function WithDrow() {
-  const {withDrow,updateWithDrow,isActive,withDrowMoney,setIsActive,setIsOpen}=useContexts();
+  const {withDrow,updateWithDrow,isActive,withDrowMoney,setIsActive,setIsOpen,isOpen}=useContexts();
   const [formData,setFormData]=useState(data)
   const [lastSavedData,setLastSavedData]=useState({...formData})
 
@@ -60,6 +61,7 @@ function WithDrow() {
   }
     return (
       <>
+      {isOpen ? <WithdrowSearch/>:
         <div className={styles.container}>
           <form action='POST' onSubmit={handleSubmit} >
           <div className={styles.formContainer}>
@@ -118,6 +120,7 @@ function WithDrow() {
         )}
        </form>
         </div>
+      }
       <div className='table'>
       <table border="1">
       <thead>

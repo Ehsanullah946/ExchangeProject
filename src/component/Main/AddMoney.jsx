@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './AddMoney.module.css'
+import AddMoneySearch from './SearchingPopup/AddMoneySearch';
 const data={
   id:"",
   account:"",
@@ -11,7 +12,7 @@ const data={
   description:"",
 }
 function AddMoney() {
-  const {deposit,updateDeposit,isActive,depositMoney,setIsActive,setIsOpen}=useContexts();
+  const {deposit,updateDeposit,isActive,depositMoney,setIsActive,setIsOpen,isOpen}=useContexts();
   const [formData,setFormData]=useState(data)
   const [lastSavedData,setLastSavedData]=useState({...formData})
   function handleChange(e) {
@@ -58,6 +59,7 @@ function AddMoney() {
   }
     return (
       <>
+      {isOpen ? <AddMoneySearch/>:
         <div className={styles.container}>
           <form action='POST' onSubmit={handleSubmit} >
           <div className={styles.formContainer}>
@@ -117,6 +119,7 @@ function AddMoney() {
         )}
        </form>
         </div>
+      }
       <div className='table'>
       <table border="1">
       <thead>

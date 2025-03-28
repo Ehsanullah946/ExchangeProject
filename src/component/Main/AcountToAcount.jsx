@@ -2,6 +2,7 @@ import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './AddMoney.module.css'
 import { useState } from 'react';
+import AccountToAccountSearch from './SearchingPopup/AccountToAccountSearch';
 const data={
   id:"",
   fromAccount:"",
@@ -11,9 +12,8 @@ const data={
   description:""
 }
 function AcountToAcount() {
-    const{updateAccountToAccount,accountToAccount,isActive,setIsActive,accountToAccountMoney}=useContexts();
+    const{updateAccountToAccount,accountToAccount,isActive,setIsActive,isOpen,setIsOpen,accountToAccountMoney}=useContexts();
      const [formData,setFormData]=useState(data);
-
      const handleChange=(e)=>{
       e.preventDefault();
       const { name, value } =e.target;
@@ -48,6 +48,10 @@ function AcountToAcount() {
       setIsActive(false);
       setFormData(lastSavedData);
      }
+     function openSearch(e) {
+      e.preventDefault();
+      setIsOpen(true);
+     } 
      function handleEdit(e){
       e.preventDefault();
       setIsActive(true);
@@ -58,6 +62,7 @@ function AcountToAcount() {
      }
     return (
       <>
+      {isOpen ? <AccountToAccountSearch/>:
       <div className={styles.container}>
         <form action='POST' onSubmit={handleSubmit} >
         <div className={styles.formContainer}>
@@ -110,13 +115,14 @@ function AcountToAcount() {
               Edit
             </Button>
             <Button tip="primary">Delete</Button>
-            <Button tip="primary">
+            <Button tip="primary" onClick={openSearch}>
               Search
             </Button>
           </>
         )}
      </form>
       </div>
+      }
     <div className='table'>
     <table border="1">
     <tr>

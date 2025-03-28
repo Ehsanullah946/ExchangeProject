@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import styles from './SAR.module.css'
 import Button from '../Button';
+import ConsumSearching from './SearchingPopup/ConsumSearching';
 const data={
   date: new Date().toISOString().split('T')[0], 
   id:"",
@@ -11,7 +12,7 @@ const data={
   description:""
 }
 function Consumptions() {
-  const{expence,updateExpence,addExpence,isActive,setIsActive}=useContexts();
+  const{expence,updateExpence,addExpence,isActive,setIsActive,isOpen,setIsOpen}=useContexts();
    const [formData,setFormData]=useState(data);
    const [lastSavedData,setLastSavedData]=useState({...formData})
    function handleChange(e){
@@ -53,8 +54,13 @@ function Consumptions() {
       setFormData(expenceToEdit);
     }
    }
+   function openSearch(e) {
+    e.preventDefault();
+    setIsOpen(true);
+   }
     return (
     <>
+    {isOpen ? <ConsumSearching/>:
       <div className={styles.container}>
       <form action='POST' onSubmit={handleSubmit}>
         <div className={styles.formContainer}>
@@ -104,13 +110,14 @@ function Consumptions() {
           Edit
         </Button>
         <Button tip="primary">Delete</Button>
-        <Button tip="primary">
+        <Button tip="primary" onClick={openSearch}>
           Search
         </Button>
       </>
     )} 
          </form>
          </div>
+        }
          <div className='table'>
     <table border="1">
       <thead>

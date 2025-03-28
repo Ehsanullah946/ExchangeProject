@@ -1,8 +1,12 @@
+import { useContexts } from '../../contexs/AppContexts';
 import styles from './Accounts.module.css'
+import AccountSearch from './SearchingPopup/AccountSearch';
 function Acounts() {
-    const date=new Date();
+  const {isOpen}=useContexts();
+      const date=new Date();
         return (
           <>
+          {isOpen ? <AccountSearch/> : 
         <div className={styles.container}>
           <form className={styles.formContainer}>
            <div className={styles.labelPart1}>
@@ -33,6 +37,7 @@ function Acounts() {
             </div>
           </div>  
         </div>
+      }
         <div className='table'>
         <table border="1">
           <tr>

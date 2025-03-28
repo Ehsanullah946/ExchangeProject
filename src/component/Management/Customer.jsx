@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import Button from '../Button';
 import styles from './Manage.module.css'
 import {useContexts} from "../../contexs/AppContexts"
-import Modal from './Modal';
+import CustomerSearch from './SearchingPopup/CustomerSearch';
 const data={
   id: "",
   firstName: "",
@@ -69,7 +69,7 @@ function Customer() {
   return (
     <>
       {isOpen ?
-    <Modal />
+    <CustomerSearch/>
       :
       <>
     <div className={styles.container}>

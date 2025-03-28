@@ -3,6 +3,7 @@ import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import Select from 'react-select';
 import styles from './SAR.module.css'
+import ReceiveMoneySearch from './SearchingPopup/ReceiveMoneySearch';
 const data={
   branch:"",
   id:"",  
@@ -21,7 +22,7 @@ const data={
   description:""
 }
 function ReciveMoney() {
-    const{receiveMoney,updateReceiveMoney,addReceiveMoney,isActive,setIsActive,branch}=useContexts();
+    const{receiveMoney,updateReceiveMoney,addReceiveMoney,isActive,setIsActive,branch,isOpen,setIsOpen}=useContexts();
     const [formData,setFormData]=useState(data);
 
     const [lastSavedData,setLastSavedData]=useState({...formData});
@@ -72,8 +73,13 @@ function ReciveMoney() {
         setIsActive(false)
         setFormData(lastSavedData);
     }
+    function openSearch(e){
+      setIsOpen(true);
+      e.preventDefault();
+    }
     return (
         <>
+      {isOpen ? <ReceiveMoneySearch/>:
  <div className={styles.container}>
     <form action='POST' onSubmit={handleSubmit} >
       <div className={styles.formContainer}>
@@ -105,10 +111,10 @@ function ReciveMoney() {
                 isSearchable // Enable searching in the dropdown
                 isDisabled={!isActive} 
               />
-        <input type="text" placeholder='No' required name="id" value={formData.id} onChange={handleChange} disabled={!isActive}/>
-        <input type="text" placeholder='Sender' required name="transfer" value={formData.transfer} onChange={handleChange} disabled={!isActive}/>
-        <input type='text' placeholder='Receiver' required name='receiver' value={formData.receiver}  onChange={handleChange} disabled={!isActive}/>
-        <input type="text" placeholder='Amount' required name='amount' value={formData.amount} onChange={handleChange} disabled={!isActive}/>
+        <input type="text"  required name="id" value={formData.id} onChange={handleChange} disabled={!isActive}/>
+        <input type="text" required name="transfer" value={formData.transfer} onChange={handleChange} disabled={!isActive}/>
+        <input type='text'  required name='receiver' value={formData.receiver}  onChange={handleChange} disabled={!isActive}/>
+        <input type="text"  required name='amount' value={formData.amount} onChange={handleChange} disabled={!isActive}/>
         <select name='currency' required value={formData.currency} onChange={handleChange} disabled={!isActive}>
             <option value="">Cur</option>
             <option value={"AFG"}>AFG</option>
@@ -201,13 +207,14 @@ function ReciveMoney() {
               Edit
             </Button>
             <Button tip="primary">Delete</Button>
-            <Button tip="primary">
+            <Button tip="primary" onClick={openSearch}>
               Search
             </Button>
           </>
         )} 
         </form>
      </div>
+      }
      <div className='table'>
     <table border="1">
     <thead>

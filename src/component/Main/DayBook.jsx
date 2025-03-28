@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import Button from '../Button';
 import styles from './DayBook.module.css'
+import DailySearch from './SearchingPopup/DailySearch';
 const data={
   date: new Date().toISOString().split('T')[0], 
   id:"",
@@ -10,7 +11,7 @@ const data={
   description:"",
 }
 function DayBook() {
-  const {dayBook,addDayBook,updateDayBook,isActive,setIsActive}=useContexts();
+  const {dayBook,addDayBook,updateDayBook,isActive,setIsActive,setIsOpen,isOpen}=useContexts();
   const[formData,setFormData]=useState(data)
   const [lastSavedData,setLastSavedData]=useState({...formData})
    function handleChange(e){
@@ -54,8 +55,13 @@ function DayBook() {
       setFormData(dayBookToEdit);
     }
    }
+   function OpenSearch(e){
+    e.preventDefault();
+    setIsOpen(true);
+   }
     return (
         <>
+        {isOpen ? <DailySearch/>:
       <div className={styles.container}>
         <form action='POST' onSubmit={handleSubmit}>
           <div className={styles.formContainer}>
@@ -115,13 +121,14 @@ function DayBook() {
               Edit
             </Button>
             <Button tip="primary">Delete</Button>
-            <Button tip="primary">
+            <Button tip="primary" onClick={OpenSearch}>
               Search
             </Button>
           </>
         )} 
         </form>
       </div>
+      }
       <div className='table'>
     <table border="1">
       <thead>

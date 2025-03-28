@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useContexts } from '../../contexs/AppContexts';
 import styles from './SAR.module.css'
 import Button from '../Button';
+import ExchangeMoneySearch from './SearchingPopup/ExchangeMoneySearch';
 const data={
   id:"",
   selCurrency:"",
@@ -15,7 +16,7 @@ const data={
   description:""
 }
 function ExchangeMoney() {
-    const{exchangeMoney,updateExchangeMoney,addExchangeMoney,isActive,setIsActive}=useContexts();
+    const{exchangeMoney,updateExchangeMoney,addExchangeMoney,isActive,setIsActive,isOpen,setIsOpen}=useContexts();
     const [formData,setFormData]=useState(data)
     const [lastSavedData,setLastSavedData]=useState({...formData});
     function handleChange(e){
@@ -58,9 +59,15 @@ function ExchangeMoney() {
         setIsActive(true);
         setFormData(data)
     }
+    function openSearch(e){
+       e.preventDefault();
+       setIsOpen(true);
+    
+    }
 
     return (
         <>
+        {isOpen ? <ExchangeMoneySearch/>:
            <div className={styles.container}>
               <form  action='POST' onSubmit={handleSubmit}>
                 <div className={styles.formContainer}>
@@ -151,13 +158,14 @@ function ExchangeMoney() {
               Edit
             </Button>
             <Button tip="primary">Delete</Button>
-            <Button tip="primary">
+            <Button tip="primary" onClick={openSearch}>
               Search
             </Button>
           </>
         )} 
               </form>
            </div>
+          }
            <div className='table'>
     <table border="1">
         <thead>
