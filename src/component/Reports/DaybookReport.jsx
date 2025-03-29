@@ -51,8 +51,8 @@ function DaybookReport() {
                 </div>
               </div>
               <div className={styles.btn}>
-              <Button type="">checkable</Button>
-              <Button type="primary">draw Report</Button>
+              <Button tip="">checkable</Button>
+              <Button tip="primary">draw Report</Button>
               </div>
            </form>
         </div>

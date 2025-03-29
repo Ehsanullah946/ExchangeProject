@@ -5,6 +5,7 @@
     border: 3px double rgb(34, 255, 0);
     width: fit-content;
     display: flex;
+    margin-bottom: 7px;
 }
 .formContainer{
     display: flex;

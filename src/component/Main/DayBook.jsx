@@ -103,8 +103,9 @@ function DayBook() {
                 </div>
              </div>  
           </div>
+          <div className={styles.btn}>
           {isActive ? (
-          <>
+            <>
             <Button tip="primary" htmlType="submit" >
               Save
             </Button>
@@ -126,6 +127,7 @@ function DayBook() {
             </Button>
           </>
         )} 
+        </div>
         </form>
       </div>
       }

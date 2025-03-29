@@ -8,7 +8,6 @@ function CustomerReport() {
            <div className={styles.labelPart1}>
              <label htmlFor="">Start Date:</label>
              <label htmlFor="">End Date:</label>
-           
            </div>
            <div className={styles.inputPart1}>
              <input type="text" value={date} />
@@ -53,8 +52,8 @@ function CustomerReport() {
            </div>
            </div>
            <div className={styles.btn}>     
-           <Button type="">checkable</Button>
-           <Button type="primary">draw Report</Button>
+           <Button tip="primary">checkable</Button>
+           <Button tip="primary">draw Report</Button>
            </div>
         </form>
      </div>

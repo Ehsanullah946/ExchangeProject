@@ -21,6 +21,7 @@ const data={
 }
 function SendMoney() {
     const{sendMoney,updateSendMoney,addSendMoney,isActive,setIsActive,isOpen,setIsOpen}=useContexts();
+    const [isEnable,setIsEnable]=useState(false);
     const [formData,setFormData]=useState(data);
     const [lastSavedData,setLastSavedData]=useState({...formData});
     const handleChange=(e)=>{
@@ -53,6 +54,11 @@ function SendMoney() {
             setFormData(sendMoneyToEdit);
         }
     }
+
+     function handleEnable(e){
+      setIsEnable(e.target.value ? true : false);
+     }
+
     function active(e){
         e.preventDefault();
         setIsActive(true)
@@ -123,7 +129,7 @@ function SendMoney() {
             <label>Date</label>
             <div>
             <label>customer</label>
-            <input type="checkbox" onChange={handleChange} disabled={!isActive}/>
+            <input type="checkbox" onChange={handleEnable} disabled={!isActive}/>
             </div>
             <label>Exchange Money</label>
             <label>Guarantor</label>
@@ -132,7 +138,7 @@ function SendMoney() {
             <div className={styles.inputPart2}>
             <input type="date" name='date' value={formData.date} onChange={handleChange} disabled={!isActive}/>
             <div>
-            <select name='customer' value={formData.customer} onChange={handleChange} disabled={!isActive}>
+          <select name='customer' value={formData.customer} onChange={handleChange}  disabled={!isEnable}>
                 <option>Ehsan</option>
                 <option>Ali</option>
                 <option>Mohmod</option>

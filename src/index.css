@@ -133,6 +133,7 @@ table td{
 .css-1xc3v61-indicatorContainer{
   padding: 0px;
   margin: 0px;
+  height: 5px;
 }
 .css-19bb58m{
   height: 12px;
@@ -140,4 +141,10 @@ table td{
 .css-13cymwt-control{
   min-height: 0;
   height: 15px;
+  
 }
+.css-hlgwow{
+  height: 12px;
+}
+
+

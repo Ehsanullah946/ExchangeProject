@@ -31,8 +31,8 @@ function WalletReport() {
              <label htmlFor="">chart view</label>
            </div>
            <div className={styles.btn}>
-           <Button>set till</Button>
-           <Button type="primary">draw Report</Button>
+           <Button tip="primary">set till</Button>
+           <Button tip="primary">draw Report</Button>
             
            </div>
         </form>

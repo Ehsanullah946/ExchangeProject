@@ -2,8 +2,8 @@
     width: fit-content;
     margin:auto;
     padding: 20px 100px 30px 100px;
-    border: 2px double rgb(34, 255, 0);
-    
+    border: 2px double rgb(34, 255, 0);  
+    margin-bottom: 10px;
 }
 .formContainer{
   display: flex;
@@ -53,4 +53,7 @@
 .currency input[name="withdrow"]{
     background-color: red;
     color: white;
+}
+.btn{
+    margin-top: 20px;
 }

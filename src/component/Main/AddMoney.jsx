@@ -47,7 +47,7 @@ function AddMoney() {
   }
    function handleEdit(e){
     e.preventDefault();
-    setIsActive(true);
+    setIsActive(true)
     const DepositToEdit=deposit.find(cust=> cust.id===formData.id);
     if(DepositToEdit){
       setFormData(DepositToEdit);
@@ -145,8 +145,8 @@ function AddMoney() {
         ))}
       </tbody>
     </table>
-      </div>
-      </>
+   </div>
+  </>
     )
 }
 

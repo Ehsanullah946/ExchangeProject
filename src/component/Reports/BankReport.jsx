@@ -29,7 +29,7 @@ function BankReport() {
              <label htmlFor="">chart view</label>
            </div>
            <div className={styles.btn}>
-           <Button type="primary">draw Report</Button>
+           <Button tip="primary">draw Report</Button>
            </div>
         </form>
      </div>
