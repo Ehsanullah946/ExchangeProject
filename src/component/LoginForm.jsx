@@ -10,10 +10,14 @@ function LoginForm() {
   
     const onSubmit = (data) => {
       console.log(data)
-      if(data.name === correctName && data.password === correctPassword){
-          navigate('/main');
+      if(data.name===correctName){
+         if(data.password===correctPassword){
+            navigate("/main");
+         }else{
+          alert("incorrect password please enter the correct one");
+         }
       }else{
-          alert("error")
+        alert("your user Name is not correct please enter the correct one");
       }
 };
     return (
@@ -42,7 +46,7 @@ function LoginForm() {
          {/* {errors.password && <span>{errors.password.message}</span>} */}
           </div>
          </div>
-         <Button tip="formBtn">Submit</Button>
+         <Button tip="formBtn">Login</Button>
         </form>
       </div>
     )

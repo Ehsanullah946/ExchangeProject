@@ -3,6 +3,7 @@ import Button from '../Button';
 import styles from './AddMoney.module.css'
 import { useContexts } from '../../contexs/AppContexts';
 import WithdrowSearch from './SearchingPopup/WithdrowSearch';
+import MainNav from './MainNav';
 const data={
   id:"",
   account:"",
@@ -34,9 +35,9 @@ function WithDrow() {
         withDrowMoney(formData);
       }
       setLastSavedData(formData);
-      setFormData(data)
-     
+      setFormData(data)  
   }
+
   function cancel(e){
     e.preventDefault();
     setIsActive(false);
@@ -54,13 +55,13 @@ function WithDrow() {
     if(withDrowToEdit){
       setFormData(withDrowToEdit);
     }
-   }
+}
    function openSearch(e) {
     e.preventDefault();
     setIsOpen(true);
   }
     return (
-      <>
+ <>
       {isOpen ? <WithdrowSearch/>:
         <div className={styles.container}>
           <form action='POST' onSubmit={handleSubmit} >

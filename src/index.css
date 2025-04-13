@@ -6,7 +6,6 @@
 :root {
   --color-brand--1: #ffb545;
   --color-brand--2: #00c46a;
-
   --color-dark--0: #242a2e;
   --color-dark--1: #2d3439;
   --color-dark--2: #42484d;
@@ -31,11 +30,11 @@ body {
   color:white;
   font-weight: 400;
   line-height: 1.6;
-  background-image: linear-gradient(
+   background-image: linear-gradient(
         rgba(28, 100, 224, 0.8),
         rgba(10, 130, 166, 0.8)
     ),
-    url("/back.jpg");
+    url("/back.jpg"); 
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -48,7 +47,7 @@ label {
 
 input,
 textarea{
-  width: 220px;
+  width: 200px;
   padding: 0.8rem 1.2rem;
   font-family: inherit;
   font-size: 1.6rem;
@@ -58,7 +57,7 @@ textarea{
   transition: all 0.2s;
 }
 select{
-  width: 220px;
+  width: 200px;
   height:20px;
 }
 input[type="checkbox"]{
@@ -137,6 +136,7 @@ table td{
 }
 .css-19bb58m{
   height: 12px;
+  width: 200px;
 }
 .css-13cymwt-control{
   min-height: 0;
@@ -146,5 +146,7 @@ table td{
 .css-hlgwow{
   height: 12px;
 }
+
+
 
 

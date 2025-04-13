@@ -28,7 +28,7 @@
 }
 .inputPart1 input,
 .inputPart1 select{
-   width: 220px;
+   width: 200px;
    margin-bottom: 5px;
    margin-right: 5px;
 }
@@ -39,6 +39,7 @@
 }
 .inputPart1 textarea{
     border:1px solid black;
+    width: 200px;
 }
 .labelPart2 {
     display: flex;
@@ -49,10 +50,12 @@
 .currency input[name="Deposit"]{
     background-color: blue;
     color: white;
+    width: 200px;
 }
 .currency input[name="withdrow"]{
     background-color: red;
     color: white;
+    width: 200px;
 }
 .btn{
     margin-top: 20px;

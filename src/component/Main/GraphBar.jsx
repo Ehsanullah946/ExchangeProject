@@ -1,7 +1,8 @@
 import { Bar } from "react-chartjs-2"
 import { Chart as chartjs
 ,BarElement,CategoryScale,
-LinearScale,Tooltip,Legend } from "chart.js"
+LinearScale,Tooltip,Legend, 
+BarController} from "chart.js"
 chartjs.register(
  BarElement,CategoryScale,
 LinearScale,Tooltip,Legend 
@@ -18,8 +19,8 @@ function GraphBar() {
         {
             label:"Expence",
             data:[1000,2000,3000,4000,5000,4000],
-            backgroundColor:'red',
-            borderColor:'white',       
+            backgroundColor:"red",
+            borderColor:'white',  
         }
     ]      
     }
@@ -39,3 +40,4 @@ function GraphBar() {
     )
 }
 export default GraphBar
+ 

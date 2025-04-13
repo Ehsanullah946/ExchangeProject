@@ -10,6 +10,7 @@
   justify-content: space-evenly;  
   margin-bottom: 10px;
 }
+
 .inputPart1{
     display:flex;
     flex-direction: column;
@@ -48,7 +49,7 @@
 }
 .inputPart2 textarea{
     border: 1px solid black;
-    width: 220px; 
+
 }  
 .labelPart3 label,
 .inputPart3 input{

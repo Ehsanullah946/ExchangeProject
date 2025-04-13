@@ -92,8 +92,10 @@ function Consumptions() {
         <textarea name='description'value={formData.description} onChange={handleChange} disabled={!isActive}/>  
         </div>
         </div>
+        <div className={styles.btn}>
+
         {isActive ? (
-      <>
+          <>
         <Button tip="primary" htmlType="submit" >
           Save
         </Button>
@@ -115,6 +117,7 @@ function Consumptions() {
         </Button>
       </>
     )} 
+    </div>
          </form>
          </div>
         }

@@ -29,7 +29,7 @@ function MoneyType() {
     function cancel(e){
         e.preventDefault();
         setIsActive(false);
-        setFormData({})
+        setFormData(data)
     }
     return (
         <>

@@ -5,10 +5,14 @@
     padding-top: 10px;
     height: 50px;
     direction:ltr;
+    background-color: aliceblue;
+    margin-bottom: 20px;
+    /* margin-top: 100px; */
 }
 .appNav ul{
     list-style: none;
     display: flex;
+     /* flex-direction: column; */
     align-items: center;
     gap: 2rem;
 }
@@ -16,7 +20,7 @@
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 500;
-    color: white;
+    color: black;
 
 }  
 .appNav a:hover{
@@ -25,3 +29,55 @@
 li.active{
     background-color: red;
 }
+.cli{
+    display: flex;
+    gap: 6px;
+   
+   }
+   svg{
+     /* color: aqua; */
+   }
+
+/* .appNav {
+    background-color: #1e1e2f;
+   
+    width: 30%;
+    flex-direction: column;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebarItem {
+    margin: 10px 0;
+    display: flex;
+    width: 20%;
+  }
+  
+  .sidebarItem a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ddd;
+    padding: 12px 20px;
+    transition: background 0.3s, color 0.3s;
+    border-left: 4px solid transparent;
+  }
+  
+  .sidebarItem a:hover {
+    background-color: #292945;
+    color: #fff;
+    border-left: 4px solid #4f8ef7;
+  }
+  
+  .sidebarItem a.active {
+    background-color: #2e2e4d;
+    color: #fff;
+    border-left: 4px solid #4f8ef7;
+  }
+  
+  .sidebarIcon {
+    font-size: 1.5rem;
+    margin-right: 12px;
+  } */
+
+  

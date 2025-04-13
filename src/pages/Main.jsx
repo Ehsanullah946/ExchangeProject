@@ -6,8 +6,10 @@ function Main() {
     return (
         <div>
             <Header />
+            <div>
             <MainNav />
             <Outlet />
+            </div>
         </div>
     );
 }

@@ -53,8 +53,10 @@ import MoreSetting from "./component/Setting/MoreSetting";
 import Print from "./component/Setting/Print";
 import Them from "./component/Setting/Them";
 import Connecting from "./component/Setting/Connecting";
+// import Sidebar from "./component/Sidebar";
 function App() {
   return <div>
+    {/* <Sidebar/> */}
       <AppProvider>
     <BrowserRouter> 
       <Routes>
