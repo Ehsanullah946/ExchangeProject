@@ -55,10 +55,16 @@ textarea{
   border-radius: 5px;
   background-color:rgb(254, 254, 254);
   transition: all 0.2s;
+  box-shadow: #333738 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+  border: none;
 }
 select{
   width: 200px;
   height:20px;
+  box-shadow: #333738 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+  border: none;
 }
 input[type="checkbox"]{
   width: 20px;

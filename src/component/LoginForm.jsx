@@ -23,6 +23,9 @@ function LoginForm() {
     return (
         <div className={styles.contain}> 
         <form onSubmit={handleSubmit(onSubmit)} >
+          <div className={styles.heading}>
+          <h1>Login Form</h1>
+          </div>
          <div  className={styles.FormContainer}>
           <div className={styles.labelSection}>
             <label htmlFor="UserName">UserName:</label>
@@ -31,6 +34,7 @@ function LoginForm() {
           <div className={styles.inputSection}>  
             <input 
               id="name" 
+              name='userName'
               type="text"
               {...register('name', { required: 'Name is required' })} 
               />

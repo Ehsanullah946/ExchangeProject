@@ -34,7 +34,7 @@ function AfghanBankWithdrow() {
            </div>
            <div className={styles.picture}>
             <img src="/about.jpg" alt="not found" />
-            <Button type="primary">Take Picture</Button>
+            <Button tip="primary">Take Picture</Button>
            </div>
         </form>
       </div>
