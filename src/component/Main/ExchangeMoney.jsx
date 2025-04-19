@@ -3,6 +3,7 @@ import { useContexts } from '../../contexs/AppContexts';
 import styles from './SAR.module.css'
 import Button from '../Button';
 import ExchangeMoneySearch from './SearchingPopup/ExchangeMoneySearch';
+import Select from 'react-select';
 const data={
   id:"",
   selCurrency:"",
@@ -11,19 +12,19 @@ const data={
   selAmount:"",
   purchesAmount:"",
   date: new Date().toISOString().split('T')[0], 
-  exchanger:"",
+  changer:"",
   customer:"",
   description:""
 }
 function ExchangeMoney() {
-    const{exchangeMoney,updateExchangeMoney,addExchangeMoney,isActive,setIsActive,isOpen,setIsOpen}=useContexts();
+    const{exchangeMoney,updateExchangeMoney,addExchangeMoney,isActive,setIsActive,isOpen,setIsOpen,customer,changer}=useContexts();
     const [formData,setFormData]=useState(data)
     const [lastSavedData,setLastSavedData]=useState({...formData});
     function handleChange(e){
         e.preventDefault();
         const {name,value}= e.target;
         if (name === 'amount' || name === 'id' || name==="rate" || name==="selAmount" || name==="purchesAmount") {
-          if (value === '' || !isNaN(value)) { // Allow empty string and numbers
+          if (value === '' || !isNaN(value)) { 
             setFormData((prevState) => ({ ...prevState, [name]: value }));
           }
         } else {
@@ -53,6 +54,19 @@ function ExchangeMoney() {
             setFormData(ExchangeMoneyToEdit);
         }
     }
+
+    const handleSelectCustomer = (selectedOption) => {
+      setFormData((prevState) => ({
+        ...prevState,
+        customer: selectedOption ? selectedOption.value : '',
+      }));
+    };
+    const handleSelectExchanger = (selectedOption) => {
+      setFormData((prevState) => ({
+        ...prevState,
+        changer: selectedOption ? selectedOption.value : '',
+      }));
+    };
     
     function active(e){
         e.preventDefault();
@@ -115,20 +129,30 @@ function ExchangeMoney() {
               <div className={styles.inputPart2}>
               <input type="date" name='date' value={formData.date} disabled={!isActive} onChange={handleChange}/>
               <div>
-              <select name='exchanger' value={formData.exchanger} disabled={!isActive} onChange={handleChange}>
-                  <option>Ehsan</option>
-                  <option>Ali</option>
-                  <option>Mohmod</option>
-              </select>
-              <button>➕</button>
+              <Select className={styles.selectOption}
+                name="changer"
+                value={{ label: formData.changer, value: formData.changer }}
+                onChange={handleSelectExchanger}
+                options={changer.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable 
+                isDisabled={!isActive} 
+             /> 
               </div>
               <div>
-              <select name='customer' value={formData.customer} disabled={!isActive} onChange={handleChange}>
-              <option>Ehsan</option>
-              <option>Ali</option>
-              <option>Mohmod</option>
-              </select>
-              <button>➕</button>
+              <Select className={styles.selectOption}
+                name="customer"
+                value={{ label: formData.customer, value: formData.customer }}
+                onChange={handleSelectCustomer}
+                options={customer.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable 
+                isDisabled={!isActive} 
+         />
               </div>
               <textarea value={formData.description} name='description' disabled={!isActive} onChange={handleChange}/>  
               </div>

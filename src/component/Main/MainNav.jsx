@@ -3,7 +3,7 @@ import styles from "../Navstyles/appNav.module.css"
 import { AiOutlineDashboard, AiOutlineRise } from "react-icons/ai"
 import { FaArrowAltCircleDown, FaExchangeAlt, FaRegArrowAltCircleUp } from "react-icons/fa"
 import { MdCompareArrows, MdToday } from "react-icons/md"
-import { RiDownloadLine, RiSendPlane2Line, RiSendPlaneLine } from "react-icons/ri"
+import { RiDownloadLine, RiSendPlaneLine } from "react-icons/ri"
 import { GiPayMoney } from "react-icons/gi"
 import { FiUser } from "react-icons/fi"
 function MainNav() {
@@ -17,7 +17,7 @@ function MainNav() {
                     <AiOutlineDashboard size={18}/>
                     Dashboard
                     </div>
-                    </NavLink>
+             </NavLink>
             </li>
             <li>
                 <NavLink to="deposit">

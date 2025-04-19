@@ -1,5 +1,6 @@
 import { useContexts } from '../../contexs/AppContexts'
 import Button from '../Button';
+import Select from 'react-select';
 import styles from './SAR.module.css'
 import { useState } from 'react';
 import SendMoneySearch from './SearchingPopup/SendMoneySearch';
@@ -20,7 +21,7 @@ const data={
   description:""
 }
 function SendMoney() {
-    const{sendMoney,updateSendMoney,addSendMoney,isActive,setIsActive,isOpen,setIsOpen}=useContexts();
+    const{sendMoney,updateSendMoney,addSendMoney,isActive,setIsActive,isOpen,setIsOpen,branch,customer,guarantor}=useContexts();
     const [isEnable,setIsEnable]=useState(false);
     const [formData,setFormData]=useState(data);
     const [lastSavedData,setLastSavedData]=useState({...formData});
@@ -59,6 +60,26 @@ function SendMoney() {
       setIsEnable(e.target.value ? true : false);
      }
 
+     const handleSelectChange = (selectedOption) => {
+      setFormData((prevState) => ({
+        ...prevState,
+        branch: selectedOption ? selectedOption.value : '',
+      }));
+    };
+     
+    const handleSelectGuarantor=(selectedOption)=>{
+       setFormData(prevState=> ({
+        ...prevState,
+        guarantor:selectedOption? selectedOption:'',
+       }))
+    }
+    const handleSelectCustomer=(selectedOption)=>{
+       setFormData(prevState=> ({
+        ...prevState,
+        customer:selectedOption? selectedOption:'',
+       }))
+    }
+
     function active(e){
         e.preventDefault();
         setIsActive(true)
@@ -90,12 +111,17 @@ function SendMoney() {
                 <label>place charge:</label>
             </div>
             <div className={styles.inputPart1}>
-            <select name='branch' required value={formData.branch} onChange={handleChange} disabled={!isActive}>
-                <option value="">select</option>
-                <option value={'Ehsan'}>Ehsan</option>
-                <option value={'Ali'}>Ali</option>
-                <option value={'Mahmod'}>Mohmod</option>
-            </select>                                        
+            <Select className={styles.selectOption}
+                name="branch"
+                value={{ label: formData.branch, value: formData.branch }}
+                onChange={handleSelectChange}
+                options={branch.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable 
+                isDisabled={!isActive} 
+              />                                        
             <input type="text" required name="id" value={formData.id} onChange={handleChange} disabled={!isActive}/>
             <input type="text" required name="transfer" value={formData.transfer} onChange={handleChange} disabled={!isActive}/>
             <input type='text' required name='receiver' value={formData.receiver}  onChange={handleChange} disabled={!isActive}/>
@@ -138,22 +164,33 @@ function SendMoney() {
             <div className={styles.inputPart2}>
             <input type="date" name='date' value={formData.date} onChange={handleChange} disabled={!isActive}/>
             <div>
-          <select name='customer' value={formData.customer} onChange={handleChange}  disabled={!isEnable}>
-                <option>Ehsan</option>
-                <option>Ali</option>
-                <option>Mohmod</option>
-            </select>
-            <button>➕</button>
+            <Select className={styles.selectOption}
+                name="customer"
+                value={{ label: formData.customer, value: formData.customer }}
+                onChange={handleSelectCustomer}
+                options={customer.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable 
+                isDisabled={!isActive} 
+              /> 
             </div>
             <div>
             <input type="text" name='exchageMoney' value={formData.exchageMoney} onChange={handleChange} disabled={!isActive}/>
             <button>➕</button>
             </div>
-            <select name='guarantor' value={formData.guarantor} onChange={handleChange} disabled={!isActive}>
-            <option>Ehsan</option>
-            <option>Ali</option>
-            <option>Mohmod</option>
-            </select>
+            <Select className={styles.selectOption}
+                name="guarantor"
+                value={{ label: formData.guarantor, value: formData.guarantor }}
+                onChange={handleSelectGuarantor}
+                options={guarantor.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable 
+                isDisabled={!isActive} 
+              /> 
             <textarea value={formData.description} name='description' onChange={handleChange} disabled={!isActive}/>  
             </div>
             <div className={styles.rightSection}>

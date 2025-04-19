@@ -224,29 +224,29 @@ function Owner() {
 
           <div className={styles.picture}>
             <img src="/about.jpg" alt="not found" />
-            <Button type="primary">Take Picture</Button>
+            <Button tip="pic">عکس گرفتن</Button>
           </div>
         </div>
         {isActive ? (
           <>
             <Button tip="primary" htmlType="submit">
-              Save
-            </Button>
+              ثبت
+             </Button>
             <Button tip="primary" type="reset" onClick={cancel}>
-              Cancel
+              انصراف
             </Button>
           </>
         ) : (
           <>
             <Button tip="primary" onClick={active}>
-              New
+              جدید 
             </Button>
             <Button tip="primary" onClick={handleEdit}>
-              Edit
+              ویرایش
             </Button>
-            <Button tip="primary">Delete</Button>
+            <Button tip="primary">حزف</Button>
             <Button tip="primary" onClick={openSearch}>
-              Search
+              جستجو
             </Button>
           </>
         )}

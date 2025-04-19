@@ -31,7 +31,7 @@ function GraphBar() {
         <div>
         <Bar
         style={
-        {width:"100%"}
+        {width:"80%",height:"300px"}
         }
         data={data}
         options={options}>     

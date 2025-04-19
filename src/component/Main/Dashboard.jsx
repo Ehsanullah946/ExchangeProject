@@ -1,9 +1,12 @@
 import styles from './Dashboard.module.css'
 import Button from "../Button"
 import GraphBar from './GraphBar'
+import Sidebar from '../Sidebar'
 function Dashboard() {
     return (
       <>
+      <div className={styles.cont}>
+      {/* <Sidebar/> */}
         <div className={styles.container}>
           <div className={styles.box}>
             <div>
@@ -38,6 +41,7 @@ function Dashboard() {
              <Button tip="boxBtn">more info❓</Button>
           </div>
         </div>
+      </div>
         <table border="1">
           <tr>
             <th>No</th>

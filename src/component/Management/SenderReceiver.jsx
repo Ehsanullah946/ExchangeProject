@@ -103,7 +103,7 @@ function SenderReceiver() {
            </div>
            <div className={styles.picture}>
             <img src="/about.jpg" alt="not found" />
-            <Button type="primary">Take Picture</Button>
+            <Button tip="pic">Take Picture</Button>
            </div>
               </div>
            {isActive ? (

@@ -94,7 +94,7 @@ function AcountToAcount() {
       </div>
       <div className={styles.picture}>
           <img src="/about.jpg" alt="not found" />
-          <Button tip="primary">Take Picture</Button>
+          <Button tip="pic">Take Picture</Button>
         </div>
       </div>
       {isActive ? (

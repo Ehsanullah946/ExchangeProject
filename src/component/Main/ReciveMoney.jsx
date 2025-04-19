@@ -22,7 +22,7 @@ const data={
   description:""
 }
 function ReciveMoney() {
-    const{receiveMoney,updateReceiveMoney,addReceiveMoney,isActive,setIsActive,branch,isOpen,setIsOpen}=useContexts();
+    const{receiveMoney,updateReceiveMoney,addReceiveMoney,isActive,setIsActive,branch,isOpen,setIsOpen,guarantor,customer}=useContexts();
     const [formData,setFormData]=useState(data);
 
     const [lastSavedData,setLastSavedData]=useState({...formData});
@@ -62,7 +62,25 @@ function ReciveMoney() {
         setFormData(data)
         
     }
-    const handleSelectChange = (selectedOption) => {
+    const handleSelectBranch = (selectedOption) => {
+      setFormData((prevState) => ({
+        ...prevState,
+        branch: selectedOption ? selectedOption.value : '',
+      }));
+    };
+    const handleSelectCustomer = (selectedOption) => {
+      setFormData((prevState) => ({
+        ...prevState,
+        customer: selectedOption ? selectedOption.value : '',
+      }));
+    };
+    const handleSelectGuarantor = (selectedOption) => {
+      setFormData((prevState) => ({
+        ...prevState,
+        guarantor: selectedOption ? selectedOption.value : '',
+      }));
+    };
+    const handleSelectPassTo = (selectedOption) => {
       setFormData((prevState) => ({
         ...prevState,
         branch: selectedOption ? selectedOption.value : '',
@@ -103,12 +121,12 @@ function ReciveMoney() {
               <Select className={styles.selectOption}
                 name="branch"
                 value={{ label: formData.branch, value: formData.branch }}
-                onChange={handleSelectChange}
+                onChange={handleSelectBranch}
                 options={branch.map((item) => ({
                   label: item.firstName,
                   value: item.firstName,
                 }))}
-                isSearchable // Enable searching in the dropdown
+                isSearchable 
                 isDisabled={!isActive} 
               />
         <input type="text"  required name="id" value={formData.id} onChange={handleChange} disabled={!isActive}/>
@@ -157,27 +175,42 @@ function ReciveMoney() {
         <div className={styles.inputPart2}>
         <input type="text" name='date' onChange={handleChange} disabled={!isActive} value={formData.date}/>
         <div>
-        <select name='customer' value={formData.customer} onChange={handleChange} disabled={!isActive}>
-            <option>select</option>
-            <option>Ehsan</option>
-            <option>Ali</option>
-            <option>Mohmod</option>
-        </select>
-        <button>➕</button>
+        <Select className={styles.selectOption}
+                name="customer"
+                value={{ label: formData.customer, value: formData.customer }}
+                onChange={handleSelectCustomer}
+                options={customer.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable 
+                isDisabled={!isActive} 
+         />
         </div>
-        <select name='passTo' value={formData.passTo} onChange={handleChange} disabled={!isActive}>
-            <option>Ehsan</option>
-            <option>Ali</option>
-            <option>Mohmod</option>
-        </select>
+        <Select className={styles.selectOption}
+                name="branch"
+                value={{ label: formData.branch, value: formData.branch }}
+                onChange={handleSelectPassTo}
+                options={branch.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable 
+                isDisabled={!isActive} 
+              />
         <input type="text" name='passNumber' value={formData.passNumber} onChange={handleChange} disabled={!isActive} />
         <div>
-        <select name='guarantor' value={formData.guarantor} onChange={handleChange} disabled={!isActive}>
-        <option>Ehsan</option>   
-        <option>Ali</option>
-        <option>Mohmod</option>
-        </select>
-        <button>➕</button>
+        <Select className={styles.selectOption}
+                name="guarantor"
+                value={{ label: formData.guarantor, value: formData.guarantor}}
+                onChange={handleSelectGuarantor}
+                options={guarantor.map((item) => ({
+                  label: item.firstName,
+                  value: item.firstName,
+                }))}
+                isSearchable 
+                isDisabled={!isActive} 
+              />
         </div>
         <textarea value={formData.description} name='description' onChange={handleChange} disabled={!isActive}/>  
         </div>

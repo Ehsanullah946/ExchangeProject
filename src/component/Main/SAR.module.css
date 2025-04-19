@@ -7,7 +7,10 @@
     /* background-color: rgb(0, 198, 253); */
     box-shadow: 10px 10px 30px  black;
     margin-bottom: 7px; 
-    border-radius: 10px;
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
 }
 .formContainer{
   display: flex;
@@ -22,7 +25,9 @@
 .labelPart2{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     margin-left: 30px;
+    margin-bottom: 20px;
 }
 .inputPart1{
     display:flex;
@@ -40,24 +45,25 @@ select[name="currency"]{
 .inputPart2{
     display:flex;
     flex-direction: column;
+    justify-content: space-around;
     margin-left: 30px;
     margin-right: 30px;
 }
+
 .inputPart1 input{
     /* width: 220px; */
     margin-top: 5px;
 } 
 .inputPart2 input,
 .inputPart2 select{
-   width: 200px;
-   margin-bottom: 5px;
+   /* margin-bottom: 5px; */
    margin-right: 5px;
 }
 .inputPart1 .charge input{
-    width: 100px;
+    width: 95px;
 }
 .charge select{
-    width: 100px;
+    width: 95px;
     border-radius: 5px;
     margin-left: 1px;
 }
@@ -68,30 +74,30 @@ select[name="currency"]{
 .labelPart2 input[type="checkbox"],
 .labelPart1 input[type="checkbox"]{
     width: 20px;
-    margin-bottom: 10px;
+    /* margin-top: 10px; */
 }
 .labelPart2 label{
     margin-bottom: 10px;
 }
 .inputPart2 textarea{
     border: 1px solid black;
-    width: 200px; 
+    width: 190px; 
 }
 img{
     height: 150px;
 }
 .selectOption{
-   width: 200px;
+   width: 190px;
    padding: 0px;
    margin: 0px;
    box-sizing: border-box;
 }
   .css-1wy0on6{
-    width: 200px;
+    width: 190px;
     height: 20px;
 }
 .css-1u9des2-indicatorSeparator{
-    width: 200px;
+    width: 190px;
     height: 20px;
     
   }
