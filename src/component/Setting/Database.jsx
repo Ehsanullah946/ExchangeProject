@@ -1,9 +1,13 @@
+import { useTranslation } from 'react-i18next';
+
 function Database() {
-    return (
-        <div>
-            database part
-        </div>
-    )
+  const { t } = useTranslation();
+  return (
+    <div>
+      <h1>{t('welcome')}</h1>
+      <p>{t('description')}</p>
+    </div>
+  );
 }
 
-export default Database
+export default Database;

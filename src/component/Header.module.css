@@ -1,66 +1,54 @@
- .nav{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding-left: 30px;
-    padding-top: 10px;
-    height: 60px;
-    position:sticky;
-    background-color: #fff;
-    /* background-color: rgb(34, 255, 0); */
-   }
-   .nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-  }
+.nav {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 30px;
+  padding-top: 10px;
+  height: 60px;
+  padding-right: 20px;
+  position: sticky;
+  background-color: #fff;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
 .nav a:link,
 .nav a:visited {
   text-decoration: none;
- /* color: var(--color-light--2);  */
+  /* color: var(--color-light--2);  */
   color: rgb(84, 84, 84);
   text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: 600;
 }
 .nav li.active a {
-  color: red; 
+  color: red;
 }
 .nav li a {
-  color: black; 
+  color: black;
   transition: color 0.3s ease;
-} 
+}
 .nav li.active a {
   color: red; /* New default color for inactive links */
   transform: scale(1.05); /* Scale the link up to make it more prominent */
   background-color: red;
 }
-.nav a:hover{
+.nav a:hover {
   color: aqua;
 }
 .active {
   color: red;
   font-weight: bold;
 }
-.cli{
- display: flex;
- /* flex-direction: column; */
-   align-items: center;
- gap: 6px;
-
+.cli {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  gap: 6px;
 }
-svg{
+svg {
   /* color: aqua; */
 }
-
- 
-
-
-
-
-
-
-
-
-
