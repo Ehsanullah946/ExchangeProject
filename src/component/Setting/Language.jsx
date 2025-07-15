@@ -6,6 +6,7 @@ function Language() {
 
   const switchLanguage = (lang) => {
     i18n.changeLanguage(lang);
+    document.body.dir = lang === 'fa' ? 'rtl' : 'ltr';
   };
 
   useEffect(() => {

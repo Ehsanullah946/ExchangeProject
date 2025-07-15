@@ -3,6 +3,7 @@ import { useContexts } from '../../contexs/AppContexts';
 import styles from './SAR.module.css';
 import Button from '../Button';
 import ConsumSearching from './SearchingPopup/ConsumSearching';
+import { useTranslation } from 'react-i18next';
 const data = {
   date: new Date().toISOString().split('T')[0],
   id: '',
@@ -12,6 +13,7 @@ const data = {
   description: '',
 };
 function Consumptions() {
+  const { t } = useTranslation();
   const {
     expence,
     updateExpence,
@@ -76,12 +78,12 @@ function Consumptions() {
           <form action="POST" onSubmit={handleSubmit}>
             <div className={styles.formContainer}>
               <div className={styles.labelPart2}>
-                <label>Date</label>
-                <label>number</label>
-                <label>Amount</label>
-                <label>Money Type</label>
-                <label>Expence Type</label>
-                <label>Description</label>
+                <label>{t('Date')}</label>
+                <label>{t('Number')}</label>
+                <label>{t('Amount')}</label>
+                <label>{t('Currency')}</label>
+                <label>{t('Expence Type')}</label>
+                <label>{t('Description')}</label>
               </div>
               <div className={styles.inputPart2}>
                 <input
@@ -143,24 +145,22 @@ function Consumptions() {
               {isActive ? (
                 <>
                   <Button tip="primary" htmlType="submit">
-                    Save
+                    {t('Save')}
                   </Button>
                   <Button tip="primary" type="reset" onClick={cancel}>
-                    Cancel
+                    {t('Cancel')}
                   </Button>
                 </>
               ) : (
                 <>
                   <Button tip="primary" onClick={active}>
-                    New
+                    {t('New')}
                   </Button>
                   <Button tip="primary" onClick={handleEdit}>
-                    Edit
+                    {t('Edit')}
                   </Button>
-                  <Button tip="primary">Delete</Button>
-                  <Button tip="primary" onClick={openSearch}>
-                    Search
-                  </Button>
+                  <Button tip="primary">{t('Delete')}</Button>
+                  <Button tip="primary">{t('Search')}</Button>
                 </>
               )}
             </div>
