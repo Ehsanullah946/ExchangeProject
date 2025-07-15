@@ -60,7 +60,7 @@ function App() {
     <div>
       {/* <Sidebar/> */}
       <AppProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/ExchangeProject">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/main" element={<Main />}>
